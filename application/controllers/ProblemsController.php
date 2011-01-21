@@ -47,6 +47,7 @@ class ProblemsController extends Zend_Controller_Action
         $cur_ps = array(); // default
         $st = new Application_Model_SelectedTest();
         $stest_id = $st->get();
+        $this->view->selected_test = $stest_id;
 
         if (!is_null($stest_id)) {
             $tpdb = new Application_Model_DbTable_TestProblems();

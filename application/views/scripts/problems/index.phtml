@@ -27,6 +27,7 @@ echo "<h2 class=\"header\">Problems</h2>";
 echo "<table class=\"center\" style=\"width: 85%;\">";
 echo "<tr><th>description</th><th>created</th><th>add?</th></tr>";
 
+$test_id = $this->selected_test;
 $cps = $this->current_problems; // problems in the currently selected test
 
 foreach ($ps as $p) {
@@ -45,7 +46,9 @@ foreach ($ps as $p) {
                     'action'     => 'add-problem',
                     'problem_id' => $p['problem_id']));
 
-    if (in_array($p['problem_id'], $cps)) {
+    if (is_null($test_id)) {
+        echo "<td class=\"disabled\">add</td>";
+    } elseif (in_array($p['problem_id'], $cps)) {
         echo "<td>in</td>";
     } else {
         echo "<td><a href=\"$add_url\">add</a></td>";

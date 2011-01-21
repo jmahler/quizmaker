@@ -55,7 +55,7 @@ class Application_Model_SelectedTest extends Zend_Db_Table_Abstract
         $test_id = $this->get();
 
         if (empty($test_id)) {
-           throw Exception("A test must be selected before problems can be added.");
+           throw new Exception("A test must be selected before problems can be added.");
         }
 
         $tpdb = new Application_Model_DbTable_TestProblems();

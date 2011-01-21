@@ -192,3 +192,7 @@ dl.zend_form dt, dl.zend_form dd {
     text-align: right;
     vertical-align: top;
 }
+
+.disabled {
+    color: grey;
+}
