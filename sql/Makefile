@@ -33,14 +33,14 @@ all: dump-schema dump
 # schema and data
 dump:
 	pg_dump --no-owner $(DBNAME) | gzip > $(DATE)-$(DBNAME)-dump.sql.gz
-	-rm -f current.sql.gz
-	ln -s $(DATE)-$(DBNAME)-dump.sql.gz current.sql.gz
+	#-rm -f current.sql.gz
+	#ln -s $(DATE)-$(DBNAME)-dump.sql.gz current.sql.gz
 
 # schema only
 dump-schema:
 	pg_dump --schema-only --no-owner $(DBNAME) | gzip > $(DATE)-$(DBNAME)-dump-schema.sql.gz
-	-rm -f current-schema.sql.gz
-	ln -s $(DATE)-$(DBNAME)-dump-schema.sql.gz current-schema.sql.gz
+	#-rm -f current-schema.sql.gz
+	#ln -s $(DATE)-$(DBNAME)-dump-schema.sql.gz current-schema.sql.gz
 
 load:
 	gunzip -c current.sql.gz | psql $(DBNAME)
