@@ -54,7 +54,7 @@ class Zend_View_Helper_FormatProblem extends Zend_View_Helper_Abstract
                     $subline = $lines[$j];
 
                     // if (found last line)
-                    if (ereg('^\\\\end{align\*}$', $subline)) {
+                    if (ereg('^\\\\end{align\*}', $subline)) {
                         //$i = $j + 1;
                         $i = $j;  // will be incrimented by $i++
                         $ss .= "\end{align*}\"><br>\n";
