@@ -1,0 +1,218 @@
+<?php
+/*
+ * Copyright (C) 2009-2011 Jeremiah Mahler <jmmahler@gmail.com>
+ *
+ * This file is part of QuizMaker.
+ * 
+ * QuizMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * QuizMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with QuizMaker.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
+/*
+ * View all the problems in a test.
+ */
+
+$test = $this->test;
+$ps = $this->problems;
+
+$test_id = $test['test_id'];
+
+echo "<div class=\"box\">";
+echo "<h2 class=\"header\">Test</h2>";
+?>
+<div class="center" style="width: 90%">
+
+<h2><?php echo $test['dsc']; ?><br>
+<span style="font-size: 70%; margin-left: 1.5em; font-weight: normal;"><?php echo $test['date']; ?></span></h2>
+
+<?php # {{{ problems ?>
+<table class="left" style="width: 90%;">
+    <colgroup style="width: 3em;"></colgroup>
+    <colgroup></colgroup>
+    <colgroup></colgroup>
+    <tr><th>#</th><th>problem</th><th>points</th></tr>
+
+<?
+
+$n = 0;
+foreach ($ps as $p) {
+    $n++;
+    $view_url = $this->url(array(
+                    'controller' => 'problems',
+                    'action' => 'view',
+                    'problem_id' => $p['problem_id']),
+                null, true);
+
+    $view_href = "<a href=\"$view_url\">" . $p['short_desc'] . "</a>";
+
+    $points = $p['points'];
+
+    echo "<tr>";
+    echo "  <td>$n</td>";
+    echo "  <td>$view_href</td>";
+    echo "  <td>" . $p['points'] . "</td>";
+    echo "</tr>";
+
+}
+if (0 == $n) {
+    echo "<tr><td colspan=3>(empty)</td></tr>";
+} else {
+    echo "<tr>";
+    echo "  <td colspan=2 class=\"right\"><b>TOTAL:</b></td>";
+    echo "  <td><b>" . $test['points'] . "</b></td>";
+    echo "</tr>";
+}
+?>
+
+<?php # }}} ?>
+
+<?php # {{{ Generate PDF tests; display links
+
+$dir = $_SERVER['DOCUMENT_ROOT'] . "/pdf-tests";
+$out_file_tex  = "$dir/test-$test_id.tex";
+$out_file_texa = "$dir/test-$test_id-ans.tex";
+$with_answers = true;
+
+#$tex     = testToTex($test, $ps);
+$tex   = testToTex($test, $ps);
+$texa  = testToTex($test, $ps, true);
+
+$outf = fopen($out_file_tex, 'w');
+fwrite($outf, $tex);
+fclose($outf);
+
+$outf = fopen($out_file_texa, 'w');
+fwrite($outf, $texa);
+fclose($outf);
+
+$startdir = getcwd();
+chdir('pdf-tests');
+exec("rubber --pdf $out_file_tex 1>/dev/null 2>&1 &");
+exec("rubber --pdf $out_file_texa 1>/dev/null 2>&1 &");
+chdir($startdir);
+?>
+
+<tr><td colspan=3>
+    <a target="_blank" href="/pdf-tests/test-<?php echo $test_id; ?>.pdf">display as PDF</a>
+    <?php if ($with_answers) { ?>
+    ( <a target="_blank" href="/pdf-tests/test-<?php echo $test_id; ?>-ans.pdf">with answers</a> )
+    <?php } ?>
+</td></tr>
+
+<?php
+
+$edit_url = $this->url(array(
+                    'controller' => 'tests',
+                    'action'     => 'edit',
+                    'test_id'    => $test_id,
+                ), null, true);
+?>
+<tr><td colspan=3>
+    <a href="<?php echo $edit_url; ?>">edit</a>
+</td></tr>
+
+
+</table>
+<?php # }}} ?>
+
+<table class="left" style="width: 90%;">
+<tr><th colspan=3>tag composition</th></tr>
+<tr><th>tag</th><th>count</th><th>%</th></tr>
+<?php
+$tags = $this->tags;
+
+foreach ($tags as $tag) {
+    echo "<tr>";
+    echo "  <td>" . $tag['tag'] . "</td>";
+    echo "  <td>" . $tag['count'] . "</td>";
+    echo "  <td>" . sprintf("%.2f", $tag['pcnt']) . "</td>";
+    echo "</tr>";
+}
+
+?>
+</table>
+
+</div>
+</div>
+
+<?php
+
+// {{{ testToTex
+/*
+ * Convert a test into a string representing TeX.
+ *
+ */
+function testToTex($test, $problems, $with_answers=false)
+{
+# Be careful with the back slashes ('\') and quotes.
+# It can be helpful to examine the TeX output directly
+# as opposed to the PDF.
+
+$s = '';
+
+$s .=
+'\documentclass[fleqn]{article}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\parindent=0in
+
+\begin{document}
+
+';
+
+# title
+$s .= '\begin{flushleft}' . "\n";
+$s .= $test['dsc'] . '\\\\' . "\n";
+$s .= $test['date'] . '\\\\' . "\n";
+$s .= '\end{flushleft}' . "\n";
+$s .= "\n";
+
+# problems
+
+$n = 0;
+foreach ($problems as $problem) {
+    $n++;
+
+    #$s .= "$n.) \\\\ \n";
+    $s .= "$n.) ";
+
+    $s .= $problem['question'];
+    $s .= "\\\\ \n\n";
+
+    $nw = $problem['nworklines'];
+    $s .= '\begin{verbatim}' . "\n";
+    for ($i = 0; $i < $nw; $i++) {
+        $s .= "\n";
+    }
+    $s .= '\end{verbatim}' . "\n\n";
+
+    if ($with_answers) {
+        $s .= "*** ANSWER ***\n\n";
+        $s .= $problem['answer'];
+        $s .= "\\\\ \n\n";
+    }
+}
+
+$s .=
+'
+\end{document}
+';
+
+$s = preg_replace('/[\r]+/', '', $s);
+
+return $s;
+}
+// }}}
+
+?>

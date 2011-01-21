@@ -1,0 +1,79 @@
+<?php
+/*
+ * Copyright (C) 2009-2011 Jeremiah Mahler <jmmahler@gmail.com>
+ *
+ * This file is part of QuizMaker.
+ * 
+ * QuizMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * QuizMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with QuizMaker.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
+$xs = $this->tests;
+
+$st = new Application_Model_SelectedTest();
+$stest_id = $st->get();
+
+?>
+<div class="box">
+<h2 class="header">Tests</h2>
+
+<table class="center" style="width: 85%;">
+<tr><th>description</th><th>date</th><th>select</th></tr>
+<?php
+$n = 0;
+foreach ($xs as $x) {
+
+    $view_url = $this->url(array(
+                    'controller' => 'tests',
+                    'action' => 'view',
+                    'test_id' => $x['test_id']));
+
+    $sel_url = $this->url(array(
+                    'controller' => 'tests',
+                    'action' => 'select-test',
+                    'test_id' => $x['test_id']));
+
+    ?>
+    <tr>
+    <td><a href="<?php echo $view_url; ?>"><?php echo $x['dsc']; ?></a></td>
+    <td><?php echo $x['date']; ?></td>
+    <?php
+    if ($x['test_id'] == $stest_id) {
+        echo "<td>current</td>";
+    } else {
+        echo "<td><a href=\"$sel_url\">select</a></td>";
+    }
+    ?>
+    </tr>
+    <?php
+
+    $n++;
+}
+if (0 == $n) {
+    echo "<tr><td colspan=3>(no tests)</td></tr>";
+}
+
+$new_url = $this->url(array(
+                'controller' => 'tests',
+                'action'     => 'new',),
+            null, true);
+
+echo "<tr><td colspan=\"3\"><a href=\"$new_url\">create new test</a></td></tr>";
+
+
+echo "</table>";
+echo "</div>";
+
+?>
+

@@ -1,0 +1,64 @@
+<?php
+/*
+ * Copyright (C) 2009-2011 Jeremiah Mahler <jmmahler@gmail.com>
+ *
+ * This file is part of QuizMaker.
+ * 
+ * QuizMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * QuizMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with QuizMaker.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
+$xs = $this->tags;
+
+echo "<div class=\"box\">";
+echo "<h2 class=\"header\">Tags</h2>";
+
+echo "<table class=\"center\" style=\"width: 85%;\">";
+echo "<tr><th>tag</th><th>description</th></tr>";
+
+$n = 0;
+foreach ($xs as $x) {
+
+    $view_url = $this->url(array(
+                    'controller' => 'tags',
+                    'action' => 'view',
+                    'problem_id' => $p['problem_id']));
+
+    echo "<tr>";
+    echo "<td>" . $p['tag'] . "</td>";
+    echo "<td><a href=\"$view_url\">" . $x['dsc'] . "</a></td>";
+    echo "</tr>";
+
+    $n++;
+}
+if (0 == $n) {
+
+    $probs_url = $this->url(array(
+                    'controller' => 'problems',
+                    'action'     => 'index',),
+                null, true);
+
+    $probs_href = "<a href=\"$probs_url\">problems</a>";
+
+    echo "<tr><td colspan=2>(empty, edit tags through $probs_href)</td></tr>";
+}
+
+#echo "<tr><td colspan=\"2\"><a href=\"$new_url\">add a new tag</a></td></tr>";
+
+
+echo "</table>";
+echo "</div>";
+
+?>
+

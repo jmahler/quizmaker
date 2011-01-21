@@ -1,0 +1,74 @@
+<?php
+/*
+ * Copyright (C) 2009-2011 Jeremiah Mahler <jmmahler@gmail.com>
+ *
+ * This file is part of QuizMaker.
+ * 
+ * QuizMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * QuizMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with QuizMaker.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
+
+$this->site_name = 'Quiz Maker';
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle($this->site_name);
+
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php
+
+$this->headLink()->prependStylesheet('/css/site.css', 'screen', true);
+$this->headLink(array('href' => '/favicon.ico', 'rel' => 'shortcut icon')) . "\n";
+
+echo $this->headMeta() . "\n";
+echo $this->headTitle() . "\n";
+echo $this->headLink() . "\n";
+?>
+</head>
+<body>
+
+<div id="sign">
+<h1><?php echo $this->site_name; ?></h1>
+</div>
+
+<?php # the status on the top right ?>
+<div id="status">
+<?php echo $this->selectedTest(); ?>
+</div>
+
+<hr>
+
+<div class="main">
+
+<div class="box navigation">
+<h2 class="header"><?php echo $this->site_name; ?></h2>
+<?php echo $this->navigation()->menu(); // [configs/application.ini] ?>
+</div>
+
+<div class="body">
+<?php echo $this->layout()->content; ?>
+</div>
+
+</div>
+
+<hr>
+
+<div class="right footer">
+&copy; 2011 <em><a href="https://github.com/jmahler/quizmaker">QuizMaker</a></em>
+</div>
+
+</body>
+</html>

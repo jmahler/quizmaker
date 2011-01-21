@@ -1,0 +1,6 @@
+
+This file is used by the web server to generate the PDF files
+from the generated LaTeX documents.
+
+The files here can be deleted and they will be re-generated as needed.
+

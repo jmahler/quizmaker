@@ -1,0 +1,59 @@
+<?php
+/*
+ * Copyright (C) 2009-2011 Jeremiah Mahler <jmmahler@gmail.com>
+ *
+ * This file is part of QuizMaker.
+ * 
+ * QuizMaker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * QuizMaker is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with QuizMaker.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ */
+
+
+
+if (is_null($this->problem)) {
+    echo "<h2>Problem not found</h2>";
+    return;
+}
+
+$title = "Problem";
+$problem = $this->problem;
+
+$this->headTitle($title);
+
+$edit_url = $this->url(array(
+                'controller' => 'problems',
+                'action' => 'edit',
+                'problem_id' => $problem['problem_id']),
+            null, true);
+
+$edit_href = "<a href=\"$edit_url\">edit</a>";
+
+?>
+
+<div class="box">
+<h2 class="header"><?php echo $title; ?></h2>
+
+<table class="center" style="width: auto;">
+
+    <tr><td><b>description</b></td><td><?php echo $problem['short_desc']; ?></td></tr>
+    <tr><td><b>par time</b></td><td><?php echo $problem['par_time']; ?></td></tr>
+    <tr><td><b>unique id</b></td><td><?php echo $problem['uuid']; ?></td></tr>
+    <tr><td><b>number of worklines</b></td><td><?php echo $problem['nworklines']; ?></td></tr>
+    <tr><td><b>tags</b></td><td><?php echo $problem['tags']; ?></td></tr>
+    <tr><td><b>question</b></td><td><?php echo $this->formatProblem($problem['question']); ?></td></tr>
+    <tr><td><b>answer</b></td><td><?php echo $this->formatProblem($problem['answer']); ?></td></tr>
+    <tr><td colspan=2 class="right"><a href="<?php echo $edit_url; ?>"><b>[ edit ]</b></a></td></tr>
+</table>
+
+</div>
