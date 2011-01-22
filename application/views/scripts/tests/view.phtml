@@ -117,11 +117,22 @@ $edit_url = $this->url(array(
                     'action'     => 'edit',
                     'test_id'    => $test_id,
                 ), null, true);
+
+$sel_url = $this->url(array(
+                    'controller' => 'tests',
+                    'action' => 'select-test',
+                    'test_id' => $test_id));
+
+$not_selected = true;
+$st = new Application_Model_SelectedTest();
+if ($test_id == $st->get()) {
+    $not_selected = false;
+}
+
 ?>
 <tr><td colspan=3>
-    <a href="<?php echo $edit_url; ?>">edit</a>
+    <a href="<?php echo $edit_url; ?>">edit</a><?php if ($not_selected) { echo ", <a href=\"$sel_url\">select</a>"; } ?>
 </td></tr>
-
 
 </table>
 <?php # }}} ?>
