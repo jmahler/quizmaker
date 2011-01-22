@@ -60,10 +60,22 @@ class Application_Model_SelectedTest extends Zend_Db_Table_Abstract
 
         $tpdb = new Application_Model_DbTable_TestProblems();
 
+        $max_order = 0; // default
+        $db = $tpdb->getAdapter();
+        $row = $db->fetchRow(
+                    $db->select()
+                        ->from('testproblems',
+                               array('max_order' => 'max("order")'))
+                            ->where('test_id = ?', (int)$test_id)
+                            ->group('test_id'));
+        if (!empty($row)) {
+            $max_order = $row['max_order'];
+        }
+
         $vals = array(
                     'test_id'    => $test_id,
                     'problem_id' => $problem_id,
-                    'order'      => 100);
+                    'order'      => $max_order + 1);
 
         $tpdb->insert($vals);
     }
