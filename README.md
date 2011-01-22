@@ -43,6 +43,13 @@ as [Apache][apache] and [Php][php].
 These packages should be straightforward to install on most [Linux][linux]
 distributions ([Debian][deb], [Ubuntu][ubu], [RedHat][red]).
 
+It is also necessary to have [Mathtex][mathtex] for previewing the equations.
+Currently the location of this cgi-script is defined in
+
+    application/views/helpers/FormatProblem.php
+
+      $host = "http://qzm.local/cgi-bin/mathtex.cgi?"
+
  [zend]: http://framework.zend.com
  [apache]: http://www.apache.org
  [php]: http://www.php.net
@@ -50,6 +57,7 @@ distributions ([Debian][deb], [Ubuntu][ubu], [RedHat][red]).
  [deb]: http://www.debian.org
  [ubu]: http://www.ubuntu.com
  [red]: http://www.redhat.com
+ [mathtex]: http://www.ctan.org/tex-archive/support/mathtex/
 
 AUTHOR
 ------
