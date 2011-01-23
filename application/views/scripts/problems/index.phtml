@@ -47,7 +47,7 @@ foreach ($ps as $p) {
                     'problem_id' => $p['problem_id']));
 
     if (is_null($test_id)) {
-        echo "<td class=\"disabled\">add</td>";
+        echo "<td class=\"disabled\" title=\"You must select a test in order to add problems.\">add</td>";
     } elseif (in_array($p['problem_id'], $cps)) {
         echo "<td>in</td>";
     } else {
