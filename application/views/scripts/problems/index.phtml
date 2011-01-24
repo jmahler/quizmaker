@@ -46,10 +46,17 @@ foreach ($ps as $p) {
                     'action'     => 'add-problem',
                     'problem_id' => $p['problem_id']));
 
+#    $rm_url = $this->url(array(
+#                    'controller' => 'tests',
+#                    'action'     => 'remove-problem',
+#                    'problem_id' => $p['problem_id']));
+
+
     if (is_null($test_id)) {
         echo "<td class=\"disabled\" title=\"You must select a test in order to add problems.\">add</td>";
     } elseif (in_array($p['problem_id'], $cps)) {
         echo "<td>in</td>";
+        #echo "<td><a href=\"$rm_url\">remove</a></td>";
     } else {
         echo "<td><a href=\"$add_url\">add</a></td>";
     }

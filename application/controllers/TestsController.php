@@ -203,7 +203,7 @@ class TestsController extends Zend_Controller_Action
 
     // {{{ addProblemAction()
     /**
-     * Create a new test.
+     * Add a problem to the test.
      */
     public function addProblemAction()
     {
@@ -219,6 +219,31 @@ class TestsController extends Zend_Controller_Action
         return $this->_helper->redirector->gotoSimple(
                                     'index',
                                     'problems');
+    }
+    // }}}
+
+    // {{{ removeProblemAction()
+    /**
+     * Remove a problem from the currently selected test.
+     */
+    public function removeProblemAction()
+    {
+        $st = new Application_Model_SelectedTest();
+        $test_id = $st->get();
+
+        if (!is_null($test_id)) {
+            $problem_id = $this->_getParam('problem_id', 0);
+
+            $tpdb = new Application_Model_DbTable_TestProblems();
+
+            $tpdb->delete('problem_id = ' . (int)$problem_id);
+        }
+
+        return $this->_helper->redirector->gotoSimple(
+                                    'view',
+                                    'tests',
+                                    null,
+                                    array('test_id' => $test_id));
     }
     // }}}
 

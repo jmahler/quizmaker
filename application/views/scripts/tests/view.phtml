@@ -41,7 +41,7 @@ echo "<h2 class=\"header\">Test</h2>";
     <colgroup style="width: 3em;"></colgroup>
     <colgroup></colgroup>
     <colgroup></colgroup>
-    <tr><th>#</th><th>problem</th><th>points</th></tr>
+    <tr><th>#</th><th>problem</th><th>points</th><th>remove?</th></tr>
 
 <?
 
@@ -56,20 +56,28 @@ foreach ($ps as $p) {
 
     $view_href = "<a href=\"$view_url\">" . $p['short_desc'] . "</a>";
 
+    $rm_url = $this->url(array(
+                    'controller' => 'tests',
+                    'action'     => 'remove-problem',
+                    'problem_id' => $p['problem_id']));
+
+    $rm_href = "<a href=\"$rm_url\">remove</a>";
+
     $points = $p['points'];
 
     echo "<tr>";
     echo "  <td>$n</td>";
     echo "  <td>$view_href</td>";
     echo "  <td>" . $p['points'] . "</td>";
+    echo "  <td>$rm_href</td>";
     echo "</tr>";
 
 }
 if (0 == $n) {
-    echo "<tr><td colspan=3>(empty)</td></tr>";
+    echo "<tr><td colspan=4>(empty)</td></tr>";
 } else {
     echo "<tr>";
-    echo "  <td colspan=2 class=\"right\"><b>TOTAL:</b></td>";
+    echo "  <td colspan=3 class=\"right\"><b>TOTAL:</b></td>";
     echo "  <td><b>" . $test['points'] . "</b></td>";
     echo "</tr>";
 }
@@ -103,7 +111,7 @@ exec("rubber --pdf $out_file_texa 1>/dev/null 2>&1 &");
 chdir($startdir);
 ?>
 
-<tr><td colspan=3>
+<tr><td colspan=4>
     <a target="_blank" href="/pdf-tests/test-<?php echo $test_id; ?>.pdf">display as PDF</a>
     <?php if ($with_answers) { ?>
     ( <a target="_blank" href="/pdf-tests/test-<?php echo $test_id; ?>-ans.pdf">with answers</a> )
@@ -130,7 +138,7 @@ if ($test_id == $st->get()) {
 }
 
 ?>
-<tr><td colspan=3>
+<tr><td colspan=4>
     <a href="<?php echo $edit_url; ?>">edit</a><?php if ($not_selected) { echo ", <a href=\"$sel_url\">select</a>"; } ?>
 </td></tr>
 

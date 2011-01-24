@@ -15,6 +15,7 @@ class Application_Model_SelectedTest extends Zend_Db_Table_Abstract
     // {{{ get()
     /*
      * Retrieve the test_id of the currently selected test.
+     * Returns null if no test is selected.
      *
      */
     public function get()
