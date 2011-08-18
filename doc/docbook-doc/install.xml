@@ -1,0 +1,72 @@
+
+<section>
+  <title>Installation</title>
+
+<para>
+  The following describes in general how to install this package
+  in to a user directory.
+  File and directory names may need to be altered slightly depending
+  on your installation.
+</para>
+
+<para>
+  First the distribution must be unpacked and placed
+  some where in the home directory.
+</para>
+
+<programlisting><![CDATA[
+jeri@bishop ~$ ls QuizMaker.tar.gz
+QuizMaker.tar.gz
+jeri@bishop ~$ tar -xvf QuizMaker.tar.gz
+jeri@bishop ~$ ls QuizMaker/
+bin  dev  doc  lib  TODO
+jeri@bishop ~$ ls QuizMaker/
+]]>
+</programlisting>
+
+<para>
+  This system has a Perl 5 module which is necessary
+  to run the utility functions (qzm-load_file, qzm-preview_problem, etc).
+  Shown below is how to create a locally accessable Perl 5
+  library directory to link to these files.
+</para>
+
+<programlisting><![CDATA[
+jeri@bishop ~$ mkdir -p lib/perl5
+jeri@bishop ~$ cd lib/perl5
+jeri@bishop perl5$ ln -s ~/QuizMaker/lib/perl5/QuizMaker.pm .
+jeri@bishop perl5$ ln -s ~/QuizMaker/lib/perl5/QuizMaker .
+jeri@bishop perl5$ cd
+jeri@bishop ~$ # make sure PERL5LIB is not already defined
+jeri@bishop ~$ env | grep PERL5
+jeri@bishop ~$ # blank output OK
+jeri@bishop ~$ export PERL5LIB="$HOME/lib/perl5"
+jeri@bishop ~$ # place the above command in .bashrc to execute automatically
+jeri@bishop ~$ env | grep PERL5
+PERL5LIB=/home/jeri/lib/perl5
+jeri@bishop ~$ # now it is defined correctly
+]]>
+</programlisting>
+
+<para>
+  Once the above is successfully completed it should be possible to
+  run the qzm-* functions in QuizMaker/bin.
+</para>
+
+<para>
+  In order for the utility functions to be accessed the QuizMaker bin
+  must be added to your PATH.  It should look something like below.
+  If it doesn't the PATH must be configured (usually in your .bashrc
+  like how PERL5LIB was configured).
+</para>
+
+<programlisting><![CDATA[
+jeri@bishop ~$ env | grep PATH
+...
+PATH=/usr/local/bin:/usr/bin:/bin:/home/jeri/QuizMaker/bin
+...
+]]>
+</programlisting>
+
+</section>
+

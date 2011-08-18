@@ -1,0 +1,251 @@
+
+\documentclass[fleqn]{article}
+\usepackage{vmargin}
+\parindent=0in
+
+\begin{document}
+
+\begin{flushleft}
+csci10 (1)\\
+\today
+\end{flushleft}
+\\
+
+1, id: 1).  Convert the number 5 to -5 using using binary 2s compliment.
+Then convert -5 back to 5 in the same way.
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+5 			(decimal)
+0000_0101   (5 binary)
+1111_1010	(invert all bits (NOT))
+1111_1011	(add one, answer -5)
+
+1111_1011   (-5 binary)
+0000_0100   (invert all bits)
+0000_0101   (add one, answer 5)
+\end{verbatim}
+
+2, id: 2).  Give the 2s compliment binary representation of -32767 (base 10)
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+Convert 32767 to decimal.
+32767				   1
+16383		   	      11
+8191		  	     111
+4095		 	    1111
+2047	   	      1 1111
+1023      	     11 1111
+511      	    111 1111
+255     	   1111 1111
+127   	     1 1111 1111
+63	        11 1111 1111
+31         111
+15        1111
+7       1
+3      11
+1  	  111
+0 	 0111 1111 1111 1111
+
+0111 1111 1111 1111		32767
+1000 0000 0000 0000		invert
+1000 0000 0000 0001		add 1, answer -32767
+\end{verbatim}
+
+3, id: 3).  Convert 12345 (base-10) to hexadecimal using the 'largest power of sixteen' algorithm.
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+Table of powers of 16
+---------------------
+16^4	65536
+16^3	4096
+16^2	256
+16^1	16
+16^0	1
+
+12345 (based 10)
+3*16^3	12345-12288=57
+0*16^2
+3*16^1	57-48=9
+9*16^0  
+
+$3039
+\end{verbatim}
+
+4, id: 4).  Convert 33 (base-10) to hexadecimal using the 'largest power of sixteen' algorithm.
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+Table of powers of 16
+---------------------
+16^2	256
+16^1	16
+16^0	1
+
+33   (base 10)
+2*16^1  33-32=1
+1*16^0
+
+$0021
+\end{verbatim}
+
+5, id: 5).  Give the 2s complement binary representation of 321 (base 10).
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+2^9 = 512
+2^8 = 256
+2^7 = 128
+2^6 = 64
+2^5 = 32
+2^4 = 16
+2^3 = 8
+2^2 = 4
+2^1 = 2
+2^0 = 1
+
+1*2^8  321-256 = 65
+0*2^7
+1*2^6  65-64 = 1
+0*2^5
+0*2^4
+0*2^3
+0*2^2
+0*2^1
+1*2^0
+
+0000 0001 0100 0001
+\end{verbatim}
+
+6, id: 6).  Give the 2s complement binary representation of -25 (base 10).
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+decimal -> binary
+1*2^4  25 - 16 = 9
+1*2^3  9 - 8 = 1
+0*2^2
+0*2^1
+1*2^0
+
+0001 1001   (25)
+
+First Method:
+0001 1001   25
+1110 0110        invert
+1110 0111        add 1
+
+1110 0111   -25  answer)
+
+To check the answer, perform the procedure again
+0001 1000        invert
+0001 1001        add 1, OK
+
+Second method:
+0001 1001   25   express as a positive
+---- ---1        start at right, write all bits through first 1
+1110 011-        invert remaining bits
+1110 0111        combine, answer, -25
+1110 0111   -25
+\end{verbatim}
+
+7, id: 7).  Give the 2s complement binary representation of -1234
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+1234 (decimal) -> binary
+
+1*2^10  1234-1024 = 210
+0*2^9
+0*2^8
+1*2^7   210 - 128 = 82
+1*2^6   82 - 64 = 18
+0*2^5
+1*2^4   18 - 16 = 2
+0*2^3
+0*2^2
+1*2^1   2 - 2 = 0
+0*2^0   
+
+0100 1101 0010  (1234 binary)
+
+0000 0100 1101 0010
+1111 1011 0010 1101  invert
+1111 1011 0010 1110  add 1, answer -1234
+
+check you answer
+0000 0100 1101 0001 invert
+0000 0100 1101 0010 add 1, 1234, OK
+\end{verbatim}
+
+8, id: 8).  Convert \verb+0xAA+ (base-16) to decimal.
+\begin{verbatim}
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{verbatim}
+10*16^1 + 10*16^0 = 170 (decimal)
+\end{verbatim}
+
+\end{document}

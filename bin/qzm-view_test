@@ -1,0 +1,76 @@
+#!/usr/bin/perl
+use strict;
+use DBI;
+
+use QuizMaker;
+
+#
+# qzm-output_test.pl
+#
+# Outputs all the questions and optionally answers for a test.
+# Result is formatted for LaTeX.
+#
+
+my $dbname = 'quizmaker';
+
+my $dbh = DBI->connect("dbi:Pg:dbname=$dbname")
+	or exit 1;
+# DBI will produce an error message so we don't need to again.
+
+# {{{ check/process arguments (@ARGV)
+
+my $usage = "a.out -test <test name> | -problems <file1> [<file2> ...]";
+
+unless (@ARGV > 1) {
+    die "$usage\n";
+}
+
+my $cmd = shift @ARGV;
+
+my $with_answers = 0;
+
+my $prob_else_test;
+if ($cmd =~ /^-problems$/) {
+    $prob_else_test = 1;
+} elsif ($cmd =~ /-problemsa/) {
+    $prob_else_test = 1;
+    $with_answers = 1;
+    # problems with answers
+} elsif ($cmd =~ /-test/) {
+    $prob_else_test = 0;
+} else {
+    die "$usage\n";
+}
+
+# }}}
+
+if ($prob_else_test) {
+    my @files = @ARGV;
+
+    my $file_not_found;
+    foreach my $file (@files) {
+        unless (-e $file) {
+            $file_not_found = 1;
+            print "$file\n";
+        }
+    }
+    if ($file_not_found) {
+        die "Please find those missing files and try again.\n";
+    }
+
+    # Create a blank test, add the problems to this test which are
+    # loaded from the files, then display the whole thing.
+
+    my $qzm = QuizMaker->new('title' => 'Blank Test');
+
+    foreach my $file (@files) {
+        my $qzp = $qzm->load_file($file);
+        $qzm->add_problem($qzp);
+    }
+
+    print $qzm->to_tex($with_answers);
+
+} else {
+    die "-test is not yet implemented\n";
+}
+

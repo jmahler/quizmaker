@@ -1,0 +1,1608 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Header: /cvsroot/autodoc/autodoc/xml.tmpl,v 1.2 2006/05/16 19:01:27 rbt Exp $ -->
+
+<book id="database.quizmaker" xreflabel="quizmaker database schema"><title>quizmaker Model</title>
+
+
+
+
+  <chapter id="public.schema"
+           xreflabel="public">
+    <title>Schema public</title>
+    <para>standard public schema</para>
+
+
+      <section id="public.table.assignedtests"
+               xreflabel="public.assignedtests">
+        <title id="public.table.assignedtests-title">
+         Table:
+         
+         <structname>assignedtests</structname>
+        </title>
+ 
+
+        <para>
+          An instance in which a test is assigned and allowed to be taken.
+        </para>
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>assignedtests</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>ass_test_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+
+
+                      <literal>UNIQUE</literal>
+
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.tests"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>user_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.users"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>actual_start_time</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>actual_end_time</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>allowed_start_time</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>allowed_max_end_time</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+        <itemizedlist>
+          <title>
+            Tables referencing problemscores via Foreign Key Constraints
+          </title>
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemscores"/>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.config"
+               xreflabel="public.config">
+        <title id="public.table.config-title">
+         Table:
+         
+         <structname>config</structname>
+        </title>
+ 
+
+        <para>
+          Global configuration options.
+        </para>
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>config</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>problems_dir</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>header_file</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>admin_email</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.problems"
+               xreflabel="public.problems">
+        <title id="public.table.problems-title">
+         Table:
+         
+         <structname>problems</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>problems</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>problem_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>file</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+              </para>
+
+              <para>
+                File where problem definition is stored.
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>dsc</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+              <para>
+                description
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>par_time</structfield></term>
+              <listitem><para>
+                <type>interval</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+                <literal>DEFAULT &apos;00:05:00&apos;::interval</literal>
+
+
+
+              </para>
+
+              <para>
+                The amount of time it should take to answer the question.  &quot;par&quot; is lingo from golf.
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>uuid</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+                      <literal>UNIQUE</literal>
+
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+
+
+              </para>
+
+              <para>
+                A unique identifier of this problem.  Used to prevent duplication (loading of the same problem twice).
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>ref</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+              <para>
+                reference: A description of who created this problem and where it came from.
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>author</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+        <itemizedlist>
+          <title>
+            Tables referencing problemscores via Foreign Key Constraints
+          </title>
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemscores"/>
+            </para>
+          </listitem>
+
+
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemtags"/>
+            </para>
+          </listitem>
+
+
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.testproblems"/>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.problemscores"
+               xreflabel="public.problemscores">
+        <title id="public.table.problemscores-title">
+         Table:
+         
+         <structname>problemscores</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>problemscores</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>pscore_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.tests"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>problem_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.problems"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>user_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.users"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>ass_test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.assignedtests"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>start_t</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>end_t</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>score</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.problemtags"
+               xreflabel="public.problemtags">
+        <title id="public.table.problemtags-title">
+         Table:
+         
+         <structname>problemtags</structname>
+        </title>
+ 
+
+        <para>
+          Tags assigned to problems.
+        </para>
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>problemtags</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>problem_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.problems"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>tag_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.tags"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.tags"
+               xreflabel="public.tags">
+        <title id="public.table.tags-title">
+         Table:
+         
+         <structname>tags</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>tags</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>tag_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>tag</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>dsc</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+              <para>
+                A description of the meaning of this tag.
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>create_date</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+                <literal>DEFAULT now()</literal>
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+        <itemizedlist>
+          <title>
+            Tables referencing problemtags via Foreign Key Constraints
+          </title>
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemtags"/>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.testproblems"
+               xreflabel="public.testproblems">
+        <title id="public.table.testproblems-title">
+         Table:
+         
+         <structname>testproblems</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>testproblems</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.tests"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>problem_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <literal>REFERENCES</literal> <xref linkend="public.table.problems"/>
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>seq</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>points</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+                <literal>DEFAULT 1</literal>
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.tests"
+               xreflabel="public.tests">
+        <title id="public.table.tests-title">
+         Table:
+         
+         <structname>tests</structname>
+        </title>
+ 
+
+        <para>
+          A test definition.
+        </para>
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>tests</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>test_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>author</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>dsc</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+              <para>
+                A description of this test (e.g. &quot;MATH-40 Fall 2010; Mr Bigler.&quot;)
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>create_date</structfield></term>
+              <listitem><para>
+                <type>timestamp(0) with time zone</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+                <literal>DEFAULT now()</literal>
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>finished</structfield></term>
+              <listitem><para>
+                <type>boolean</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+                <literal>DEFAULT false</literal>
+
+
+
+              </para>
+
+              <para>
+                A finished test should not be further modified.
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+        <itemizedlist>
+          <title>
+            Tables referencing assignedtests via Foreign Key Constraints
+          </title>
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.assignedtests"/>
+            </para>
+          </listitem>
+
+
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemscores"/>
+            </para>
+          </listitem>
+
+
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.testproblems"/>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+
+
+
+
+
+
+      </para>
+    </section>
+
+      <section id="public.view.testscores"
+               xreflabel="public.testscores">
+        <title id="public.view.testscores-title">
+         View:
+         
+         <structname>testscores</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>testscores</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>user_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>ass_test_id</structfield></term>
+              <listitem><para>
+                <type>integer</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>score</structfield></term>
+              <listitem><para>
+                <type>bigint</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+
+        <figure>
+         <title>Definition of view testscores</title>
+         <programlisting>
+SELECT problemscores.test_id
+, problemscores.user_id
+, problemscores.ass_test_id
+, sum
+(problemscores.score) AS score 
+FROM problemscores 
+GROUP BY problemscores.test_id
+, problemscores.user_id
+, problemscores.ass_test_id;</programlisting>
+        </figure>
+
+
+
+      </para>
+    </section>
+
+      <section id="public.table.users"
+               xreflabel="public.users">
+        <title id="public.table.users-title">
+         Table:
+         
+         <structname>users</structname>
+        </title>
+ 
+
+
+        <para>
+          <variablelist>
+            <title>
+              Structure of <structname>users</structname>
+            </title>
+
+
+            <varlistentry>
+              <term><structfield>user_id</structfield></term>
+              <listitem><para>
+                <type>serial</type>
+
+
+                <literal>PRIMARY KEY</literal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>username</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+                      <literal>UNIQUE</literal>
+
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>password</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+                <literal>NOT NULL</literal>
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>role</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>first_name</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>last_name</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>address</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>phone</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+            <varlistentry>
+              <term><structfield>email</structfield></term>
+              <listitem><para>
+                <type>text</type>
+
+
+
+
+
+
+
+              </para>
+
+            </listitem>
+          </varlistentry>
+
+        </variablelist>
+
+
+
+
+
+
+
+        <itemizedlist>
+          <title>
+            Tables referencing assignedtests via Foreign Key Constraints
+          </title>
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.assignedtests"/>
+            </para>
+          </listitem>
+
+
+
+          <listitem>
+            <para>
+              <xref linkend="public.table.problemscores"/>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+
+
+
+
+
+
+      </para>
+    </section>
+
+
+
+  </chapter>
+
+</book>
+

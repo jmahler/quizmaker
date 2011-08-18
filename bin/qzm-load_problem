@@ -1,0 +1,75 @@
+#!/usr/bin/perl
+use strict;
+use DBI;
+
+#
+# qzm-load_file.pl
+#
+# Load a problem from a file and insert it into the database.
+#
+
+use QuizMaker;
+
+#use File::Basename;
+use File::Spec;
+
+my $usage =
+"qzm-load-file <file> [<file2> ...]
+  OR using file glob
+       *.pl";
+
+my $qzm = QuizMaker->new();
+
+my @files = @ARGV;
+
+unless (0 < @files) {
+	die "$usage\n";
+}
+
+#
+# Make sure all the specified files are available,
+# otherwise quit.
+#
+my $file_not_found;
+foreach my $file (@files) {
+    unless (-e $file) {
+        print STDERR "file not found: '$file'\n";
+        $file_not_found = 1;
+    }
+}
+if ($file_not_found) {
+    print STDERR "Please resolve the missing files (above) and try again.\n";
+    exit 1;
+}
+
+#my $file = $files[0];
+foreach my $file (@files) {
+
+    # The file should be present (checked earlier) but if it isn't
+    # print a warning message and skip it.
+	unless (-e $file) {
+		print STDERR "file not found, skipping: '$file'\n";
+		next;
+	}
+
+	$file = File::Spec->rel2abs($file);
+
+	open(IN_FILE, "< $file")
+		or die "Unable to open $file $!\n";
+
+	#print "Processing: $file\n";
+
+    # load problem from file and associate with parent ($qzm)
+    my $qzp = $qzm->load_file($file);
+    unless ($qzp) {
+        print STDERR "Unable to load problem from file: '$file', skipping.\n";    
+        next;
+    }
+
+    # save problem to database
+    my $res = $qzp->to_db();
+    unless ($res) {
+        print STDERR "Unable to save problem to database, skipping.\n";    
+        next;
+    }
+}

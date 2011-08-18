@@ -1,0 +1,280 @@
+
+\documentclass[fleqn]{article}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\parindent=0in
+
+\begin{document}
+
+\begin{flushleft}
+math31-series-01 (1)\\
+\today
+\end{flushleft}
+
+
+1, id: 6).  Does it converge?  And if so find the range of values.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty} \left(3*x\right)^n\\
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+It is geometric with $r = 3*x$.
+
+To converge the range of values of $x$ must satisfy $r < 1$.
+
+\begin{align*}
+\left| 3x \right| &< 1\\
+\left| x \right| &< \frac{1}{3}\\
+-\frac{1}{3} &< x < \frac{1}{3}\\
+\end{align*}
+
+
+2, id: 4).  Does it converge?  And if so find the exact value.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{4}{2^n}
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+It can be converted to geometric form.
+
+\begin{align*}
+&= 4 \sum_{n=1}^{\infty} \frac{1}{2^n}\\
+&= 4 \sum_{n=1}^{\infty} \left(\frac{1}{2}\right)^n\\
+\end{align*}
+
+Since $r < 1$ it should converge.
+
+\begin{align*}
+&= 4 \frac{a}{1 - r}\\
+&= 4 \frac{1}{1 - \frac{1}{2}}\\
+&= 8\\
+\end{align*}
+
+Geometric, $r = 1/2$, converges to $8$.
+
+3, id: 5).  Does it converge?  And if so find the range of values.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{x^n}{2^n}
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+It can be converted to geometric form.
+
+\begin{align*}
+&= \sum_{n=1}^{\infty} \left(\frac{x}{2}\right)^n\\
+\end{align*}
+
+Since it is geometric, it must satisfy $r < 1$ in order to converge.
+
+\begin{align*}
+\left| \frac{x}{2} \right| &< 1\\
+\left| x \right| &< 2\\
+-2 & < x < 2\\
+\end{align*}
+
+
+4, id: 8).  Does the series converge?\\
+
+\begin{align*}
+\frac{\ln2}{2} + \frac{\ln3}{3} + \frac{\ln4}{4} + \frac{\ln5}{5} + + +\\
+\end{align*}
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{\ln(n+1)}{n+1}\\
+\end{align*}
+
+Let $f(x) = \frac{\ln(x+1)}{x+1}$.
+
+Look at $\int_{1}^{\infty} \frac{\ln(x+1)}{x+1} dx$ .
+
+\begin{align*}
+& \int_{1}^{\infty} \frac{\ln(x+1)}{x+1} dx\\
+&= \left[ \frac{(\ln(x+1))^2}{2} \right]_{1}^{\infty}\\
+&= \infty - \frac{(\ln(2))^2}{2} = \infty
+\end{align*}
+
+Because the integral diverges so too will the series.
+
+5, id: 1).  Does it converge?  And if so find the exact value.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty}\frac{1}{n(n+3)}
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+The limit goes to zero so it should converge.
+\begin{align*}
+\lim_{n\rightarrow\infty}\frac{1}{n (n+3)}\\
+\end{align*}
+
+Using partial fractions of case 1 it converts to:
+\begin{align*}
+\frac{1}{3} \sum_{n=1}^{\infty}\frac{1}{n} - \frac{1}{n+3}
+\end{align*}
+which is in the form of a telescopic series
+
+\begin{align*}
+= & \left(1-\frac{1}{4}\right)+\left(\frac{1}{2}-\frac{1}{5}\right)+\left(\frac{1}{3}-\frac{1}{6}\right)+\left(\frac{1}{4}-\frac{1}{7}\right)...\left(\frac{1}{n-2}-\frac{1}{n+1}\right)+\left(\frac{1}{n-1}-\frac{1}{n+2}\right)+\left(\frac{1}{n}-\frac{1}{n+3}\right)\end{align*}
+
+Seeing that the second term the first of the 3rd group away and continuing
+this pattern results in:
+
+\begin{align*}
+\frac{1}{3}\lim_{n\rightarrow\infty}1+\frac{1}{2}+\frac{1}{3}-\frac{1}{n+1}-\frac{1}{n+2}-\frac{1}{n+3}
+\end{align*}
+
+which produces the exact value that the series converges to:
+
+\begin{align*}
+&= \frac{1}{3}*\frac{11}{6}\\
+&= \frac{11}{18}
+\end{align*}
+
+
+6, id: 2).  Does it converge?  And if so find the exact value.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty} \ln(\frac{n+1}{n})
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+The limit goes to zero so it should converge.
+
+It is not geometric.
+
+Let $f(x) = \ln((x+1)/x)$.
+Look at $\int_{1}^{\infty} \ln((x+1)/x)$.
+
+The integral of $f(x)$ goes to $\infty$ so the original series diverges.
+
+7, id: 3).  Does it converge?  And if so find the exact value.\\
+
+\begin{align*}
+\sum_{n=1}^{\infty} \left(1+\frac{k}{n}\right)^{n}\\
+when \;\; k 
+eq 0
+\end{align*}
+
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+
+\begin{align*}
+& \lim_{n \rightarrow \infty} \left(1+\frac{k}{n}\right)^{n}\\
+&= e^k\\
+&
+eq 0\\
+\end{align*}
+
+Because the limit does not go to zero the series will not converge.
+
+
+8, id: 7).  Does the series converge?\\
+
+\begin{align*}
+\frac{1}{2} + \frac{1}{5} + \frac{1}{10} + \frac{1}{17} + \frac{1}{26} + + +\\
+\end{align*}
+
+\begin{verbatim}
+
+
+
+
+
+\end{verbatim}
+
+*** ANSWER ***
+
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{1}{n^2+1}\\
+\end{align*}
+
+Let $f(n) = \frac{1}{n^2+1}$.
+Look at $\int_{1}^{\infty} \frac{1}{n^2+1} dn$.
+
+\begin{align*}
+& \int_{1}^{\infty} \frac{1}{n^2+1} dn\\
+&= \left[ \arctan(n) \right]_{1}^{\infty}\\
+&= \frac{\pi}{2} - \frac{\pi}{4} = \frac{\pi}{4}\\
+\end{align*}
+
+Because the integral converges so too will the series.
+
+
+\end{document}

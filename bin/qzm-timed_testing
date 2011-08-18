@@ -1,0 +1,106 @@
+#!/usr/bin/perl
+use strict;
+
+use DBI;
+
+use QuizMaker;
+
+my $dbname = "quizmaker";
+
+my $dbh = DBI->connect("dbi:Pg:dbname=$dbname")
+	or die;
+
+
+
+my @open_test_ids = @{get_open_tests($dbh)};
+
+my $test_id = undef;
+my $test_start_time = undef;
+
+if (@open_test_ids) {
+	# print non-open tests
+	print_test_header();
+	foreach my $test_id_x (@open_test_ids) {
+		print_test($dbh, $test_id_x);
+	}
+
+	while (1) {
+		print "Enter the test to resume or Enter to skip [skip]? ";
+		my $chosen_test_id = <STDIN>;
+		chomp($chosen_test_id);
+
+		if (grep $chosen_test_id, @open_test_ids) {
+			$test_id = $chosen_test_id;
+			#$test_start_time = get_next_test_start_time($dbh, $test_id);
+		} else {
+			print "Invalid choice.\n";
+			next;
+		}
+	}
+
+} else {
+	print "No open tests found.\n";
+}
+
+if (!$test_id) {
+	my @test_ids = @{get_all_tests($dbh)};
+
+	# print non-open tests
+	print_test_header();
+	foreach my $test_id_x (@test_ids) {
+		if (! grep $test_id_x, @open_test_ids) {
+			print_test($dbh, $test_id_x);
+		}
+	}
+	# list tests
+
+	if (@test_ids) {
+		while (1) {
+			print "Which test do you want to start? ";
+			my $test_id_x = <STDIN>;
+			chomp($test_id_x);
+
+			if (grep $test_id_x, @test_ids) {
+				$test_id = $test_id_x;
+				last;
+			} else {
+				print "Invalid choice.\n";
+			}
+		}
+	} else {
+		print "No other tests found.\n";
+	}
+}
+
+if (!$test_id) {
+	print "Cannot continue without selecting a test, aborting.\n";
+	exit;
+}
+
+print "Selected test '$test_id'\n";
+# a test has been selected
+
+
+if (! $test_start_time) {
+	$test_start_time = get_start_time($dbh, $test_id);
+}
+
+#print "Starting test $test_id on question $question_n\n";
+print "Press enter when ready or Ctrl-D to quit.\n";
+<STDIN>;
+
+print "For each question, press Enter when you are done.\n";
+
+while (1) {
+
+	my ($problem_id, $number) = next_problem($dbh, $test_id, $test_start_time);
+	if (! $problem_id) {
+		print "All questions done.\n";
+		last;
+	}
+
+	print "Q: $number";
+	<STDIN>;	
+	stop_problem($dbh, $test_id, $test_start_time, $problem_id);
+}
+

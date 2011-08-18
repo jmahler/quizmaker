@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?> <!-- -*- xml -*- -->
+
+<chapter>
+<title>Design</title>
+
+<para>
+  This section aims to provide a conceptual understanding of the system.
+  The different roles (student, teacher) and their particular requirements.
+  And the concepts used to satisfy the requirements. 
+</para>
+
+<!-- {{{ Student Requirements -->
+<section>
+  <title>Student Requirements</title>
+
+  <para>
+    A student needs a way to easily build tests in which they can
+    quiz themselves with.
+  </para>
+
+  <para>
+    In the past a student would accumulate problems from their notes
+    taken in class and homework assignments.
+    When it is necessary to study for a test these notes and homework
+    assignments would be reviewed.
+  </para>
+
+  <para>
+    But there are several shortcomings in this method.
+    Sequentially scanning through a large amount of notes
+    and home work problems is cumbersome.
+    It is difficult to focus on a particular subject unless the notes
+    are well organized.
+    There is no accounting of the number of times the problem has been
+    attemted or how well the student has scored.
+  </para>
+
+  <para>
+    This system simplifies this situation in several ways.
+    Each problem is stored in an electronic format which is very
+    compact in comparision to being stored on paper.
+    The problems are organized in to a database which can be easily queried.
+    Groups of problems can be organized in to tests which can also be searched.
+    A particular students score on a particular problem is stored and
+    then these statistics can be aggregated to provide a score specific
+    to a subject or a test.
+  </para>
+
+</section>
+<!-- }}} -->
+
+<!-- {{{ Teacher Requirements -->
+<section>
+  <title>Teacher Requirements</title>
+
+  <para>
+    A teacher needs a way to easily build tests in which they can
+    test their students with.
+  </para>
+
+  <para>
+    A teacher would typically build tests manually.
+    They would creating novel problems or source them from books.
+    Then they would use a word processing program to write the
+    test and then make copies to give to the students during the test.
+    Once all the students have taken the test and the tests have been
+    scored they will know some general statistics such as the average score,
+    the highest score, etc.
+  </para>
+
+  <para>
+    But there are several shortcomings in this method.
+    It can be cumbersome and time consuming to build a test from scratch.
+    There is likely very little information as to how appropriate
+    a problem was and how well students have done on a particular problem.
+  </para>
+
+</section>
+<!-- }}} -->
+
+<!-- {{{ Organizing Problems With Tags -->
+<section>
+  <title>Organizing Problems With Tags</title>
+
+  <para>
+    The database will consist of a large number of problems.
+    And it is necessary to be able to search the database to find
+    relevant problems.
+  </para>
+
+  <para>
+    The text that defines the question and answer is one possible source
+    of information about a problem.
+    But its information is limited because it does not necessarily contain
+    relevant keywords.
+    A problem that involves "partial fractions" might only show the result
+    with out saying "partial fractions was used at this step".
+  </para>
+
+  <para>
+    One solution is to allow every problem to define its own set of unique tags.
+    In the previous example one tag would be "partial fractions".
+    It could also have tags describing the class ("MATH-40") or any number
+    of other possible things.
+  </para>
+
+  <para>
+    A benefit of using tags is that statistics can be generated based on them.
+    It is possible to see if a student is scoring poorly relevant to a particular
+    tag.
+    The results of a test with tags can help zero in on subjects in which
+    the student is doing poorly in and avoid those which he is doing well in.
+  </para>
+
+  <para>
+    The problem should have as many relevant tags as necessary in order to
+    describe the problem.
+    General tags such as the class it was used for (math-40, phys-42) or the
+    main subject of study (math, physics).
+    Grouping can be done by defining a unique tag among the group such as
+    for a test.
+    An example of a unique name might be: "MATH-40, test 3, 11/18/10, Bigler".
+    Note, a test may also be defined outside of tags depending on the
+    implementation.
+    The relevant subject matter should be defined using tags but not overly so.
+    For example, a problem in Calculus that uses addition should not have a tag
+    for addition because it is so trivial at this level of math.
+    If however the problem was for a first grade class a tag for addition
+    might make sense.
+  </para>
+
+</section>
+<!-- }}} -->
+
+<!-- {{{ Organizing Tags -->
+<section>
+  <title>Organizing Tags</title>
+
+  <para>
+    After many problems have been defined the number of tags may become
+    quite large.
+    Methods may be necessary to manage the tags and make them easier
+    to search.
+  </para>
+
+  <para>
+    If there are tags which are only slightly different they could be merged
+    together.
+    This would mean altering the definition of the problem after it has
+    been registered with the database.
+  </para>
+
+  <para>
+    The tags being viewed could be restricted.
+    If problems for several classes were stored it might be desireable
+    to restrict the view to only "math" and not "history".
+  </para>
+
+</section>
+<!-- }}} -->
+
+<!-- {{{ Problem Format -->
+<section>
+  <title>Problem Format</title>
+
+<para>
+  The problems typically found in Math and Physics classes involve math
+  equations.
+  Because of this and the need for output to be suitable for printing,
+  <ulink url="http://www.latex-project.org">LaTeX</ulink>
+  is a good choice for the format in which to write the text of the problems.
+  An excellent introduction/reference for LaTeX is
+  <ulink url="http://www.ctan.org/tex-archive/info/lshort">The Not So Short
+    Introduction to LaTeX</ulink>
+</para>
+</section>
+<!-- }}} -->
+
+</chapter>
+
+
+

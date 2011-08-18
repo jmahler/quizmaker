@@ -1,0 +1,68 @@
+
+
+** How to organize "edit test"?  An example session...
+
+Tue, 03 Nov 2009 08:54:33 -0800
+
+
+qzm$ ls
+ id    dsc        num_qs  total_time  score  time
+ --    -----      ------  ----------  -----  ----
+ FINISHED (readonly)
+ 1     csci10     10      00:30:00    80%    200%
+ 2     csci10.02  10      00:30:00    85%    150%
+ UNFINISHED
+ 3     csci10.03  10      00:30:00    --	 --
+
+qzm$ create csci10.04
+
+qzm$ padd <test id> tag[s]=[csci10, factorial, integration] limit=10
+
+qzm$ ls <test id>
+qzm$ ls 3
+ total questions: 10
+ date: 2009-10-12
+ tag            num_qs  % of total
+ -----------    ------  ----------
+ csci10         10      100
+ factorial      5       50
+ integration    5       50
+
+qzm$ copy <src test id> <dest test id>
+qzm$ lsq 3
+  num   id
+  ---   ---
+  1.    132
+  2.    101
+  3.    10
+
+qzm$ swapq 3 1
+qzm$ lsq 3
+  num   id
+  ---   ---
+  1.    10
+  2.    101
+  3.    132
+
+qzm$ rmq 2
+qzm$ lsq 3
+  num   id
+  ---   ---
+  1.    10
+  2.    132
+
+qzm$ finish <test id>
+
+
+** Problems stored as files?
+
+Sun, 01 Nov 2009 12:55:58 -0800
+
+It may be better to store each question as a file instead of stored
+as a text string in a table.
+
+* Simplifies editing.
+* Version control of files.
+* No escaping problems when importing/exporting data.
+
+In the event that the database crashes the problems would not be lost.
