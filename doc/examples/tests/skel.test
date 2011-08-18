@@ -1,0 +1,26 @@
+
+# TODO - describe how to build this test
+
+# A description of this test
+$class = 'CSCI 21';
+$term = 'Spring 2011';
+$title = 'Final Exam';
+
+$instructions = <<'INSTRUCTONS';
+Each question is worth 10 points. For input you can assume that you have
+access to 'CinReader reader'.  Do not write a complete program unless you
+are instructed to do so by the question.
+INSTRUCTONS
+
+# The array of problems that define this test in
+# the order they should appear in the test.
+@problems = qw(
+../problems/skel.problem
+../problems/skel.problem
+../problems/skel.problem
+);
+# (normally these would be different problems)
+
+# vim:syntax=perl
+
+1;

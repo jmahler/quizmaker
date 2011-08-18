@@ -25,39 +25,10 @@ them.
 QuizMaker can bring studying closer to testing by generating a set of problems
 without answers for the student to perform.
 
-INSTALL
--------
-
-Once the basic packages have been installed (see REQUIREMENTS) a
-database schema should be loaded (see the directory sql/).
-The schema can be loaded without data or with data.
-The schema with data includes a basic set of problems
-which is good for learning how the problems can be formatted.
-
 REQUIREMENTS
 ------------
 
-This system is completely web based and built using the [Zend Framework][zend].
-In addition to Zend you will also need those packages that it depends on such
-as [Apache][apache] and [Php][php].
-These packages should be straightforward to install on most [Linux][linux]
-distributions ([Debian][deb], [Ubuntu][ubu], [RedHat][red]).
-
-It is also necessary to have [Mathtex][mathtex] for previewing the equations.
-Currently the location of this cgi-script is defined in
-
-    application/views/helpers/FormatProblem.php
-
-      $host = "http://qzm.local/cgi-bin/mathtex.cgi?"
-
- [zend]: http://framework.zend.com
- [apache]: http://www.apache.org
- [php]: http://www.php.net
- [linux]: http://www.kernel.org
- [deb]: http://www.debian.org
- [ubu]: http://www.ubuntu.com
- [red]: http://www.redhat.com
- [mathtex]: http://www.ctan.org/tex-archive/support/mathtex/
+TODO
 
 AUTHOR
 ------
