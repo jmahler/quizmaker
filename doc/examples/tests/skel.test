@@ -17,7 +17,6 @@ INSTRUCTONS
 @problems = qw(
 ../problems/skel.problem
 ../problems/skel.problem
-../problems/skel.problem
 );
 # (normally these would be different problems)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 
-use QuizMaker::Test;
+use QuizMaker;
 
 #
 # qzm-view_test
@@ -23,8 +23,6 @@ my $test_file = shift @ARGV;
 
 my $qzt = QuizMaker::Test->load_file($test_file)
 	or die "unable to load test\n";
-
-# be careful with the escapes!
 
 my $proc_name = (split /\//, $0)[-1];
 
@@ -56,6 +54,7 @@ HEADER1
 my $class = $qzt->{'class'};
 my $term = $qzt->{'term'};
 my $title = $qzt->{'title'};
+# be sure to double the escapes with double quotes!
 print <<"HEADER2";
 
 \\begin{tabular}{l r}
@@ -98,7 +97,6 @@ for (my $i = 0; $i < @problems; $i++) {
 	print "\n\\begin{solution}\n";
 	print $qzp->{answer};
 	print "\n\\end{solution}\n";
-
 }
 
 print '
