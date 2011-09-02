@@ -1,5 +1,13 @@
 
-# TODO - describe how to build this test
+#
+# To view this test run:
+#
+#   qzm-view_test <this file> > output.tex
+#
+# Then process the tex in to dvi (or ps, pdf)
+#
+#   rubber output.tex
+#
 
 # A description of this test
 $class = 'CSCI 21';

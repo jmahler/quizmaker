@@ -71,8 +71,9 @@ sub load_file {
 			$short_desc,
 			$par_time,
 			@tags,
+			$worklines,  # number of work lines, should use work space instead
 			$workspace,
-			#$uuid,
+			$uuid,
         	$ref,
 			$author);
 
@@ -82,6 +83,15 @@ sub load_file {
             "Check for syntax errors in the problem definition.\n";
         return;
     }
+
+	# Some old problem specs use $worklines.
+	# Here it is attempted to converted to $workspace
+	# which uses \vspace in LaTeX.
+	# I have not found an exact way to use the text height
+	# so this is an approximation.
+	if (!$workspace) {
+		$workspace = ($worklines + 2) . "em";
+	}
 
 	# fix escapes so LaTeX works correctly
     $question =~ s/[\\][\s]*$/ \\\\/;
@@ -94,7 +104,7 @@ sub load_file {
         par_time => $par_time,
         tags => [@tags],
         workspace => $workspace,
-		#uuid => $uuid,
+		uuid => $uuid,
         ref => $ref,
         author => $author,
 		#data_format => 'Perl',
