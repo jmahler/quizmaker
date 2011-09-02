@@ -1,7 +1,11 @@
 
 #
-# doc/examples/problems/skel.problem
-#   - An example QuizMaker problem definition in Perl
+# skel.problem - A template (skeleton) QuizMaker problem definition.
+#   [http://github.com/jmahler/quizmaker]
+#
+# The syntax of this file is in Perl.
+# The variables below must be defined but other variables or code
+# can be added.
 #
 # To preview this run the command qzm-preview which will produce
 # LaTeX output.  Then pipe this through rubber-pipe to produce a dvi
