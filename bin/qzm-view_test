@@ -116,6 +116,11 @@ for (my $i = 0; $i < @problems; $i++) {
 	#my $n = $i + 1;  # problem number
 	my $qzp = $problems[$i];
 
+	if ($qzp eq '\pagebreak') {
+		print "\n\\pagebreak\n";
+		next;
+	}
+
 	print "\n\\question ";
 	#print "$n.)  ";
 	print $qzp->{question};

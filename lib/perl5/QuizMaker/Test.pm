@@ -89,6 +89,11 @@ sub load_file {
 	for (my $i = 0; $i < @problem_files; $i++) {
 		my $problem_file = $problem_files[$i];
 
+		if ($problem_file eq '\pagebreak') {
+			$problems[$i] = '\pagebreak';
+			next;
+		}
+
 		my $qzp = QuizMaker::Problem->load_file($problem_file);
 		if (!$qzp) {
 			carp "Error loading problem " . ($i + 1) . " ('$problem_file'), ABORTED\n";
