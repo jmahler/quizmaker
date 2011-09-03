@@ -91,7 +91,7 @@ sub load_file {
 
 		my $qzp = QuizMaker::Problem->load_file($problem_file);
 		if (!$qzp) {
-			carp "Error loading problem $i ('$problem_file'), ABORTED\n";
+			carp "Error loading problem " . ($i + 1) . " ('$problem_file'), ABORTED\n";
 			return;
 		}
 
