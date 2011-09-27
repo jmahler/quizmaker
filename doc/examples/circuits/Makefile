@@ -1,5 +1,6 @@
 
-all: simple-circuits.pdf simple-circuits-ans.pdf
+#all: simple-circuits.pdf simple-circuits-ans.pdf
+all:	 EECE311-test1-01.pdf EECE311-test1-01-ans.pdf
 
 %-ans.tex: %.test
 	qzm-view_test --printanswers $< > $@
