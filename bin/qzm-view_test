@@ -115,7 +115,9 @@ my @problems = @{$qzt->{problems}};
 for (my $i = 0; $i < @problems; $i++) {
 	#my $n = $i + 1;  # problem number
 	my $qzp = $problems[$i];
+	my $workspace = $qzp->{workspace};
 
+	# Add a pagebreak between problems if requested
 	if ($qzp eq '\pagebreak') {
 		print "\n\\pagebreak\n";
 		next;
@@ -125,13 +127,27 @@ for (my $i = 0; $i < @problems; $i++) {
 	#print "$n.)  ";
 	print $qzp->{question};
 
-	print "\n";
-	print '\vspace*{' . $qzp->{workspace} . '}';
-	print "\n";
+	if ($workspace ne '0' and $workspace ne 'wholepage') {
+		print "\n";
+		print '\vspace*{' . $workspace . '}';
+		print "\n";
+	}
 
+	# If the problem workspace needs the 'wholepage' 
+	# do this by adding a pagebreak.
+	# If a preceeding page break is desired this can be accomplished
+	# by using \pagebreak as a problem in the test definition (see above).
+	if ($workspace eq 'wholepage') {
+		print '\pagebreak' . "\n";
+	}
+
+	# The answer is always in the .tex output, but it
+	# can be configured in that file whether to display
+	# them or not.
 	print "\n\\begin{solution}\n";
 	print $qzp->{answer};
 	print "\n\\end{solution}\n";
+
 }
 
 print '

@@ -16,8 +16,7 @@ terminals $a$ and $b$.
 
 QUESTION
 
-# An entire page?
-$workspace = '8in';
+$workspace = 'wholepage';
 
 $answer = <<'ANSWER';
 One strategy for solving this problem is to use mesh current analysis
