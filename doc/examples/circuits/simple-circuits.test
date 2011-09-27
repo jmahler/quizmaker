@@ -10,7 +10,7 @@ This test shows how a problem can include an image.
 INSTRUCTIONS
 
 @problems = qw(
-../problems/circuits/voltage-resistor.problem
+problems/voltage-resistor.problem
 );
 
 # vim:syntax=perl

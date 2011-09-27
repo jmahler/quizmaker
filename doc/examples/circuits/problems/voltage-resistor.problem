@@ -1,9 +1,9 @@
 
 # This example problem shows how to include an image.
 
-@tags = ('Ohms Law');
+@tags = ('Ohms Law', 'easy');
 
-$par_time = '00:00:30';  # 1 minute
+$par_time = '00:00:10';  # 1 minute
 
 $short_desc = "Find the current using Ohm's Law";
 
