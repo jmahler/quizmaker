@@ -1,0 +1,18 @@
+
+# This example test uses a problem which includes an image.
+
+$class = '(no class)';
+$term = '(no term)';
+$title = '(testing image example)';
+
+$instructions = <<'INSTRUCTIONS';
+This test shows how a problem can include an image.
+INSTRUCTIONS
+
+@problems = qw(
+../problems/circuits/voltage-resistor.problem
+);
+
+# vim:syntax=perl
+
+1;
