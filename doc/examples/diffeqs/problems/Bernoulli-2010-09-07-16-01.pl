@@ -94,7 +94,7 @@ HERE
 $uuid = "Tue, 07 Sep 2010 16:29:03 -0700";
 
 $ref = 'An example given in class (MATH-40) taught by Mr Bigler at '.
-'Butte Community College on 2010-Sep-01.';;
+'Butte Community College on 2010-Sep-01.';
 
 $author = 
 'Jeremiah Mahler <jmmahler@gmail.com>
