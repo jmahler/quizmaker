@@ -1,0 +1,109 @@
+#!/usr/bin/perl
+use strict;
+
+use QuizMaker;
+
+unless (@ARGV) {
+print <<'USAGE';
+USAGE:
+  -listtags <files>                       # List all unique tags from the files.
+
+  -findtags -tags <tags> -files <files>   # Find problems with ALL the tags.
+                                          # Tags are separated by spaces.
+                                          # Tags with spaces or special characters
+                                          # in name should be quoted.
+USAGE
+}
+
+my ($cmd) = shift @ARGV;
+
+# {{{ -listtags
+if ($cmd eq '-listtags') {
+	my %uniq_tags;
+
+	# the rest of the @ARGV's are file names
+	# Find all the unique tags from these problems.
+	foreach my $file (@ARGV) {
+		my $qzm = QuizMaker::Problem->load_file($file);	
+
+		if (! defined $qzm) {
+			print STDERR "error loading problem from file '$file', skipping.\n";
+			next;
+		}
+
+		my @tags = @{$qzm->{tags}};
+		map { $uniq_tags{$_} = 1; } @tags;
+	}
+
+	# display the unique tags
+
+	print "TAGS:\n";
+	foreach my $tag (keys %uniq_tags) {
+		print " $tag\n";
+	}
+}
+# }}}
+
+# {{{ -findtags
+elsif ($cmd eq '-findtags') {
+	my @files_wtags; # files with all the given tags
+
+	# tags and files from arguments
+	my @req_tags;
+	my @files;
+
+	my $mode;  # 'tag' or 'file'
+	foreach my $arg (@ARGV) {
+		# look for commands to switch the "mode"
+		if ($arg =~ /^-files?$/) {
+			$mode = 'file';
+			next;
+		} elsif ($arg =~ /^-tags?$/) {
+			$mode = 'tag';
+			next;
+		} # else stay in current mode
+
+		if ($mode eq 'file') {
+			push @files, $arg;
+		} elsif ($mode eq 'tag') {
+			push @req_tags, $arg;
+		} else {
+			print STDERR "malformed argument '$arg' not preceeded by a ".
+							"'-file' or -tag'\n";
+		}
+	}
+
+	# Scan the files and print the file name if it has
+	# all the tags.
+	print "FILES:\n";
+	foreach my $file (@files) {
+		my $qzm = QuizMaker::Problem->load_file($file);	
+
+		if (! defined $qzm) {
+			print STDERR "error loading problem from file '$file', skipping.\n";
+			next;
+		}
+
+		my @tags = @{$qzm->{tags}};
+
+		my $all_found = 1;
+		foreach my $req_tag (@req_tags) {
+			my $found = 0;  # default not found
+			foreach my $tag (@tags) {
+				if ($tag eq $req_tag) {
+					$found = 1;
+				}
+			}
+			if (0 == $found) {
+				$all_found = 0;
+				last;
+			}
+		}
+
+		if ($all_found) {
+			print "  $file\n";
+		}
+	}
+}
+# }}}
+
