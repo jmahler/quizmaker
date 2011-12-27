@@ -4,14 +4,23 @@ use strict;
 use QuizMaker;
 
 unless (@ARGV) {
-print <<'USAGE';
+my $prog_name = (split /\//, $0)[-1];
+
+print <<"USAGE";
+
 USAGE:
+  $prog_name <option> <sub-options>
+  
+OPTIONS:
   -listtags <files>                       # List all unique tags from the files.
 
   -findtags -tags <tags> -files <files>   # Find problems with ALL the tags.
                                           # Tags are separated by spaces.
                                           # Tags with spaces or special characters
                                           # in name should be quoted.
+
+  -testtags <test>                        # List the tags the test is composed of
+
 USAGE
 }
 
@@ -104,6 +113,47 @@ elsif ($cmd eq '-findtags') {
 			print "  $file\n";
 		}
 	}
+}
+# }}}
+
+# {{{ -testtags
+elsif ($cmd eq '-testtags') {
+
+	my $test_file = shift @ARGV;
+
+	my $qzmt = QuizMaker::Test->load_file($test_file);
+	exit 1 if (! $qzmt);
+
+	my @problems = @{$qzmt->{'problems'}};  # problem objects
+
+	my %tag_counts;
+	my $total_tags = 0;
+
+	foreach my $problem (@problems) {
+		my @tags = @{$problem->{tags}};
+
+		foreach my $tag (@tags) {
+			if (exists $tag_counts{$tag}) {
+				$tag_counts{$tag} += 1;
+			} else {
+				$tag_counts{$tag} = 1;
+			}
+			$total_tags++;
+		}
+	}
+
+	print "    %      count     tag\n";
+	print "  -----    -----     ---\n";
+	if ($total_tags > 0) {
+		foreach my $tag (keys %tag_counts) {
+			my $pcnt = ($tag_counts{$tag} / $total_tags) * 100;
+			printf("%7.2f   %5.d", $pcnt, $tag_counts{$tag});
+			print "      $tag\n";
+		}
+	} else {
+		print "(0 tags)\n";
+	}
+
 }
 # }}}
 
