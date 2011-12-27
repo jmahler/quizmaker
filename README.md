@@ -17,30 +17,43 @@ database so that they can be quickly recalled and grouped together to build test
 SYNOPSIS
 --------
 
+The system consists of command line utilities which are used
+to query problems and build tests.
+
+Shown below is an example of how to query the problems.
+
+    jeri@bishop diffeqs$ qzm-query -listtags problems/*.pl
+    TAGS:
+     test
+     mixture
+     trig
+     polynomial long division
+     reduction of order
+     Newton
+     exact ODE
+     math
+    ...
+    jeri@bishop diffeqs$ qzm-query -findtags -tags math "exact ODE" -files problems/*.pl 
+    FILES:
+      problems/exact-ODE-2010-09-13-01.pl
+      problems/exact-ODE-2010-09-13-02.pl
+    jeri@bishop diffeqs$
+
+
 Show below is a sample session used to create a test.
+To compile the [LaTeX][latex] code [Rubber][rubber] is used but other
+equivalent utilities can be used as well.
+These commands are also provided in the Makefile.
 
-    jeri@bishop tests$ pwd
-    /home/jeri/quizmaker/doc/examples/tests
-    jeri@bishop tests$ ls
-    Makefile  skel.test
-    jeri@bishop tests$ qzm-view_test skel.test > skel.tex
-    jeri@bishop tests$ ls
-    Makefile  skel.test  skel.tex
-    jeri@bishop tests$ rubber skel.tex
-    compiling skel.tex...
-    compiling skel.tex...
-    jeri@bishop tests$ ls
-    Makefile  skel.aux  skel.dvi  skel.log  skel.test  skel.tex
-    jeri@bishop tests$ kdvi skel.dvi
-
-The file `skel.test` is the test definition.
-Here 'skel' is shorthand for 'skeleton' since this file is used as an
-example from which to build other test definitions.
-`qzm-view_test` is used to convert the test definition in `skel.test`
-to LaTeX format.
-The [`rubber`][rubber] command is used to process the LaTeX code in to dvi or other
-output types (ps, pdf).
-
+    jeri@bishop diffeqs$ qzm-view_test MATH-40-p01.test > MATH-40-p01.tex
+    jeri@bishop diffeqs$ rubber --pdf MATH-40-p01.tex 
+    compiling MATH-40-p01.tex...
+    compiling MATH-40-p01.tex...
+    jeri@bishop diffeqs$ ls
+    Makefile         MATH-40-p01.log  MATH-40-p01.test  problems
+    MATH-40-p01.aux  MATH-40-p01.pdf  MATH-40-p01.tex
+    jeri@bishop diffeqs$
+    
  [rubber]: https://launchpad.net/rubber
 
 REQUIREMENTS
