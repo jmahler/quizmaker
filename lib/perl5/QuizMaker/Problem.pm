@@ -41,15 +41,15 @@ reference syntax ($qzp->{'key'}).
 
   print $qzp->{'question'};
 
- - $question
- - $answer
+ - $question   - the question in LaTeX format
+ - $answer     - the answer in LaTeX format
  - $short_desc - short description, useful for summaries
  - $par_time   - time it should take to answer the problem
                  in HH:MM:SS format.
- - @tags
- - $workspace  - vertical space (\vspace) needed to work the problem
+ - @tags       - list of tags for this question
+ - $workspace  - amount of \vspace (LaTeX) to provide for solving the problem
  - $ref        - reference to where this problem originated
- - $author
+ - $author     - author of this problem
 
 =cut
 
@@ -97,16 +97,16 @@ sub load_file {
     $question =~ s/[\\][\s]*$/ \\\\/;
 
     bless {
-        file => $file,
-        question => $question,
-        answer => $answer,
+        file       => $file,
+        question   => $question,
+        answer     => $answer,
         short_desc => $short_desc,
-        par_time => $par_time,
-        tags => [@tags],
-        workspace => $workspace,
-		uuid => $uuid,
-        ref => $ref,
-        author => $author,
+        par_time   => $par_time,
+        tags       => [@tags],
+        workspace  => $workspace,
+		uuid       => $uuid,
+        ref        => $ref,
+        author     => $author,
 		#data_format => 'Perl',
     }, $class;
 }
@@ -118,9 +118,9 @@ Refer to the parent module 'QuizMaker' for version information.
 
 =head1 AUTHOR
 
-Jeremiah Mahler <jmmahler@gmail.com>
-CPAN ID: JERI
-http://www.google.com/profiles/jmmahler#about
+  Jeremiah Mahler <jmmahler@gmail.com>
+  CPAN ID: JERI
+  http://www.google.com/profiles/jmmahler#about
 
 =head1 COPYRIGHT
 

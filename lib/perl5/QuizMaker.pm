@@ -17,10 +17,10 @@ QuizMaker - Perl 5 module for the QuizMaker system
 
 =head1 SYNOPSIS
 
-  # create new test
+  # load a test from a file
   $qzm = QuizMaker::Test->load_file($file);
 
-  # get the problmes (QuizMaker::Problem)
+  # get the problems (QuizMaker::Problem)
   @problems = @{$qzm->{problems}};
 
   # do stuff with problems
@@ -34,9 +34,9 @@ This document refers to QuizMaker version 0.02.
 
 =head1 AUTHOR
 
-Jeremiah Mahler <jmmahler@gmail.com>
-CPAN ID: JERI
-http://www.google.com/profiles/jmmahler#about
+  Jeremiah Mahler <jmmahler@gmail.com>
+  CPAN ID: JERI
+  http://www.google.com/profiles/jmmahler#about
 
 =head1 COPYRIGHT
 
