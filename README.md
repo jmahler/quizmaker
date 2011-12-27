@@ -1,21 +1,22 @@
 
 NAME
-----
+====
 
 QuizMaker - Build tests of math problems.
 
-INTRODUCTON
------------
+INTRODUCTION
+============
 
 A student studying math, physics or engineering will accumulate many
 problems during the course of a class.
 But if these problems are recorded on paper they can be difficult
 to study from because it is hard to search for problems.
-The QuizMaker system aims to ease this situation by organizing problems into a
-database so that they can be quickly recalled and grouped together to build tests.
+The goal of the QuizMaker system is to simplify this situation by
+organizing a database of problems using tags so that tests can
+be easily created which focus on specific facets of a subject.
 
 SYNOPSIS
---------
+========
 
 The system consists of command line utilities which are used
 to query problems and build tests.
@@ -57,7 +58,7 @@ These commands are also provided in the Makefile.
  [rubber]: https://launchpad.net/rubber
 
 REQUIREMENTS
-------------
+============
 
 To run these programs it is necessary to have a recent version
 of [Perl][perl] and a [LaTeX][latex] processor.
@@ -65,8 +66,8 @@ of [Perl][perl] and a [LaTeX][latex] processor.
  [perl]: http://www.perl.org
  [latex]: http://www.latex-project.org
 
-INSTALLATON
------------
+INSTALLATION
+============
 
 To run the programs they need to be accessible on a users
 $PATH and the libraries must be found by Perl ($PERL5LIB).
@@ -89,13 +90,13 @@ using [Git][quizmaker].
  [quizmaker]: https://github.com/jmahler/quizmaker
 
 AUTHOR
-------
+======
 
 Jeremiah Mahler <jmmahler@gmail.com><br>
 <http://www.google.com/profiles/jmmahler#about>
 
 COPYRIGHT
----------
+=========
 
 Copyright &copy; 2011, Jeremiah Mahler.  All Rights Reserved.<br>
 This project is free software and released under
