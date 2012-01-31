@@ -77,6 +77,18 @@ sub load_file {
         	$ref,
 			$author);
 
+	# set the default values
+	undef $question;
+	undef $answer;
+	undef $short_desc;
+	undef $par_time;
+	undef @tags;
+	undef $worklines;
+	undef $workspace;
+	undef $uuid;
+	undef $ref;
+	undef $author;
+
     my $res = eval($code);
     unless ($res) {
         print STDERR "Error executing eval: $@".
@@ -85,12 +97,12 @@ sub load_file {
     }
 
 	# Some old problem specs use $worklines.
-	# Here it is attempted to converted to $workspace
+	# Here we are attempting to convert to $workspace
 	# which uses \vspace in LaTeX.
 	# I have not found an exact way to use the text height
 	# so this is an approximation.
-	if (!$workspace) {
-		$workspace = ($worklines + 2) . "em";
+	if (! defined $workspace) {
+		$workspace = ($worklines) . "em";
 	}
 
 	# fix escapes so LaTeX works correctly
