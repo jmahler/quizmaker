@@ -62,6 +62,7 @@ print <<'HEADER1';
 \usepackage{ulem}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{enumerate}
 
 \parindent=0pt
 %\usepackage{graphicx}
