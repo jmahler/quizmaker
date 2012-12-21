@@ -144,7 +144,9 @@ for (my $i = 0; $i < @problems; $i++) {
 	$tmp =~ s/}}}/} } }/g;
 	print $tmp;
 
-	if ($workspace ne '0' and $workspace ne 'wholepage') {
+	if ($printanswers) {
+		# leave out the work space if answers are being included
+	} elsif ($workspace ne '0' and $workspace ne 'wholepage') {
 		print "\n";
 		print '\vspace*{' . $workspace . '}';
 		print "\n";
