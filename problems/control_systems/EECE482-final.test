@@ -1,0 +1,30 @@
+
+#
+# This test is based on a final exam given
+# by Dr. Ghandakly at Chico State during the Fall of 2012.
+#
+# The final was not returned so these problems were recalled
+# from memory.  But they are representative.
+#
+
+$class = 'EECE 482';
+$term = 'Fall 2012';
+$title = 'Final Exam';
+
+$instructions = <<'INSTRUCTONS';
+Solve each of the problems using blank paper.\\
+Calculators can be used but no cell phones or other
+"smart" devices are allowed.
+INSTRUCTONS
+
+#problems/pole_placement-X.pl
+#problems/dz_to_state_space-X.pl
+#problems/PID_controller-X.pl
+#problems/state_space_to_dz-X.pl
+@problems = qw(
+problems/gs_to_state_space-20121218.pl
+);
+
+# vim:syntax=perl
+
+1;
