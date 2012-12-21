@@ -40,7 +40,7 @@ This document refers to QuizMaker version 0.02.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2010, Jeremiah Mahler. All Rights Reserved.
+Copyright (c) 2012, Jeremiah Mahler. All Rights Reserved.
 This module is free software.  It may be used, redistributed
 and/or modified under the same terms as Perl itself.
 

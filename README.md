@@ -2,7 +2,7 @@
 NAME
 ====
 
-QuizMaker - Build tests of math problems.
+QuizMaker - Build tests of math problems formatted with [LaTeX][latex]
 
 INTRODUCTION
 ============
@@ -23,7 +23,7 @@ to query problems and build tests.
 
 Shown below is an example of how to query the problems.
 
-    jeri@bishop diffeqs$ qzm-query -listtags problems/*.pl
+    diffeqs$ qzm-query -listtags problems/*.pl
     TAGS:
      test
      mixture
@@ -34,26 +34,26 @@ Shown below is an example of how to query the problems.
      exact ODE
      math
     ...
-    jeri@bishop diffeqs$ qzm-query -findtags -tags math "exact ODE" -files problems/*.pl 
+    diffeqs$ qzm-query -findtags -tags math "exact ODE" -files problems/*.pl 
     FILES:
       problems/exact-ODE-2010-09-13-01.pl
       problems/exact-ODE-2010-09-13-02.pl
-    jeri@bishop diffeqs$
+    diffeqs$
 
 
-Show below is a sample session used to create a test.
+Shown below is a sample session used to create a test.
 To compile the [LaTeX][latex] code [Rubber][rubber] is used but other
-equivalent utilities can be used as well.
+equivalent utilities should work as well.
 These commands are also provided in the Makefile.
 
-    jeri@bishop diffeqs$ qzm-view_test MATH-40-p01.test > MATH-40-p01.tex
-    jeri@bishop diffeqs$ rubber --pdf MATH-40-p01.tex 
+    diffeqs$ qzm-view_test MATH-40-p01.test > MATH-40-p01.tex
+    diffeqs$ rubber --pdf MATH-40-p01.tex 
     compiling MATH-40-p01.tex...
     compiling MATH-40-p01.tex...
-    jeri@bishop diffeqs$ ls
+    diffeqs$ ls
     Makefile         MATH-40-p01.log  MATH-40-p01.test  problems
     MATH-40-p01.aux  MATH-40-p01.pdf  MATH-40-p01.tex
-    jeri@bishop diffeqs$
+    diffeqs$
     
  [rubber]: https://launchpad.net/rubber
 
@@ -72,20 +72,26 @@ INSTALLATION
 To run the programs they need to be accessible on a users
 $PATH and the libraries must be found by Perl ($PERL5LIB).
 
-One solution which is well suited for development
+One solution, which is well suited for development,
 is to unpack the package in to the users directory such as
-~/user and then to link to the needed parts inside.
+~/quizmaker/ and then to link to the needed parts inside.
 
-If the user has the directory ~/bin which is searchable in
-the environment variable $PATH then links can be added to
+If the user has the directory ~/bin, which is searchable in
+the environment variable $PATH, then links can be added to
 the programs in the bin directory of this package.
 
-Similarly if the user has the directory ~/lib/perl5/ which is
+    ~$ cd ~/bin
+    ~/bin$ ln -s ~/quizmaker/bin/* .
+
+Similarly, if the user has the directory ~/lib/perl5/ which is
 searchable in the environment variable $PERL5LIB then links can
 be added to the libraries in the lib/perl5 directory of this package.
 
-One these links are added it is simple to retrieve upstream updates
-using [Git][quizmaker].
+    ~$ cd ~/lib/perl5/
+    ~/lib/perl5$ ln -s ~/quizmaker/lib/perl5/* .
+
+Once these links are added it is simple to retrieve upstream updates
+using the usual git pull.
 
  [quizmaker]: https://github.com/jmahler/quizmaker
 
@@ -98,7 +104,7 @@ Jeremiah Mahler <jmmahler@gmail.com><br>
 COPYRIGHT
 =========
 
-Copyright &copy; 2011, Jeremiah Mahler.  All Rights Reserved.<br>
+Copyright &copy; 2012, Jeremiah Mahler.  All Rights Reserved.<br>
 This project is free software and released under
 the [GNU General Public License][gpl].
 

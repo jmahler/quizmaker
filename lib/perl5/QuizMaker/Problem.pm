@@ -50,6 +50,9 @@ reference syntax ($qzp->{'key'}).
  - $workspace  - amount of \vspace (LaTeX) to provide for solving the problem
  - $ref        - reference to where this problem originated
  - $author     - author of this problem
+ - $file       - file where this problem was located
+
+ (refer to the source for any additional fields)
 
 =cut
 
@@ -136,7 +139,7 @@ Refer to the parent module 'QuizMaker' for version information.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2010, Jeremiah Mahler. All Rights Reserved.
+Copyright (c) 2012, Jeremiah Mahler. All Rights Reserved.
 This module is free software.  It may be used, redistributed
 and/or modified under the same terms as Perl itself.
 

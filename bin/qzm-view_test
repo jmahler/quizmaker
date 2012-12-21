@@ -120,19 +120,37 @@ for (my $i = 0; $i < @problems; $i++) {
 
 	# Add a pagebreak between problems if requested
 	if ($qzp eq '\pagebreak') {
-		print "\n\\pagebreak\n";
+		#print "\n\\pagebreak\n";  # DISABLED
 		next;
 	}
 
-	print "\n\\question ";
+	print "\n";
+
+	# Add Vim folds to make the .tex source easier to navigate.
+	print "% {{{ Q" . ($i + 1) . "\n";
+
+	print "\\begin{samepage}\n";
+	print "\n";
+
+	# Add the location where the problem file was sourced from
+	print "% problem file: '" . $qzp->{file} . "'\n";
+
+	print "\\question ";
 	#print "$n.)  ";
-	print $qzp->{question};
+
+	# print the question
+	# And also fix the }}} in equations which conflict with Vim folds
+	my $tmp = $qzp->{question};	
+	$tmp =~ s/}}}/} } }/g;
+	print $tmp;
 
 	if ($workspace ne '0' and $workspace ne 'wholepage') {
 		print "\n";
 		print '\vspace*{' . $workspace . '}';
 		print "\n";
 	}
+
+	print "\n\\end{samepage}\n";
 
 	# If the problem workspace needs the 'wholepage' 
 	# do this by adding a pagebreak.
@@ -142,13 +160,24 @@ for (my $i = 0; $i < @problems; $i++) {
 		print '\pagebreak' . "\n";
 	}
 
+	print "\n";
+
 	# The answer is always in the .tex output, but it
 	# can be configured in that file whether to display
 	# them or not.
-	print "\n\\begin{solution}\n";
-	print $qzp->{answer};
+	print "% {{{ solution\n";
+	print "\\begin{solution}\n";
+
+	# print the anser
+	# And also fix the }}} in equations which conflict with Vim folds
+	my $tmp = $qzp->{answer};	
+	$tmp =~ s/}}}/} } }/g;
+	print $tmp;
+
 	print "\n\\end{solution}\n";
 
+	print "% }}}\n";  # END solution fold
+	print "% }}}\n";  # END question fold
 }
 
 print '
@@ -156,4 +185,3 @@ print '
 
 \end{document}
 ';
-
