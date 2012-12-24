@@ -9,25 +9,28 @@ my $prog_name = (split /\//, $0)[-1];
 print <<"USAGE";
 
 USAGE:
-  $prog_name <option> <sub-options>
+  $prog_name <command> <options>
   
-OPTIONS:
-  -listtags <files>                       # List all unique tags from the files.
+COMMANDS:
+  listtags <files>                      # List all unique tags from the files.
 
-  -findtags -tags <tags> -files <files>   # Find problems with ALL the tags.
-                                          # Tags are separated by spaces.
-                                          # Tags with spaces or special characters
-                                          # in name should be quoted.
+  findtags -tag <tag> [-tag <tag> ...] <files>
 
-  -testtags <test>                        # List the tags the test is composed of
+                                        # Find problems with ALL the tags.
+                                        # Tags are separated by spaces.
+                                        # Tags with spaces or special
+                                        # characters in name should be quoted.
+
+  testtags <test>                       # List the tags the test is
+                                        # composed of
 
 USAGE
 }
 
 my ($cmd) = shift @ARGV;
 
-# {{{ -listtags
-if ($cmd eq '-listtags') {
+# {{{ listtags
+if ($cmd eq 'listtags') {
 	my %uniq_tags;
 
 	# the rest of the @ARGV's are file names
@@ -53,37 +56,45 @@ if ($cmd eq '-listtags') {
 }
 # }}}
 
-# {{{ -findtags
-elsif ($cmd eq '-findtags') {
-	my @files_wtags; # files with all the given tags
-
+# {{{ findtags
+elsif ($cmd eq 'findtags') {
 	# tags and files from arguments
 	my @req_tags;
 	my @files;
 
-	my $mode;  # 'tag' or 'file'
-	foreach my $arg (@ARGV) {
-		# look for commands to switch the "mode"
-		if ($arg =~ /^-files?$/) {
-			$mode = 'file';
-			next;
-		} elsif ($arg =~ /^-tags?$/) {
-			$mode = 'tag';
-			next;
-		} # else stay in current mode
+	# find the tags from the arguments
+	my $i;
+	for ($i = 0; $i < @ARGV; $i++) {
 
-		if ($mode eq 'file') {
-			push @files, $arg;
-		} elsif ($mode eq 'tag') {
-			push @req_tags, $arg;
+		my $arg = $ARGV[$i];
+
+		if ($arg =~ /^-tags?$/) {
+
+			$i++;
+
+			if ($i >= @ARGV) {
+				print STDERR "-tag option given without an argument\n";
+				exit 1;
+			}
+
+			push @req_tags, $ARGV[$i];
 		} else {
-			print STDERR "malformed argument '$arg' not preceeded by a ".
-							"'-file' or -tag'\n";
+			# no more -tag arguments
+			last;
 		}
 	}
 
-	# Scan the files and print the file name if it has
+	if ($i == @ARGV) {
+		print STDERR "no problem files given\n";
+		exit 1;
+	}
+
+	# the remaining arguments are files
+	@files = @ARGV[$i .. $#ARGV];
+
+	# Scan the problem files and print the file name if it has
 	# all the tags.
+	my $one_found = 0;  # flag set if at least one found
 	print "FILES:\n";
 	foreach my $file (@files) {
 		my $qzm = QuizMaker::Problem->load_file($file);	
@@ -99,8 +110,9 @@ elsif ($cmd eq '-findtags') {
 		foreach my $req_tag (@req_tags) {
 			my $found = 0;  # default not found
 			foreach my $tag (@tags) {
-				if ($tag eq $req_tag) {
+				if ($req_tag eq $tag) {
 					$found = 1;
+					last;
 				}
 			}
 			if (0 == $found) {
@@ -111,13 +123,21 @@ elsif ($cmd eq '-findtags') {
 
 		if ($all_found) {
 			print "  $file\n";
+			$one_found = 1;
 		}
+	}
+
+	if (! $one_found) {
+		print "No problems found, for those tags, in the " . @files .
+				" files searched.\n";
+		print "  Perhaps you should try the 'listtags' command.\n";
+		exit 0;
 	}
 }
 # }}}
 
-# {{{ -testtags
-elsif ($cmd eq '-testtags') {
+# {{{ testtags
+elsif ($cmd eq 'testtags') {
 
 	my $test_file = shift @ARGV;
 
@@ -153,7 +173,12 @@ elsif ($cmd eq '-testtags') {
 	} else {
 		print "(0 tags)\n";
 	}
+} 
+# }}}
 
+# {{{ unknown command
+else {
+	print "unkown command: '$cmd'\n";
 }
 # }}}
 
