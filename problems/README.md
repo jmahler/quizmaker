@@ -1,26 +1,30 @@
 
 NAME
-====
+----
 
 quizmaker/problems/
 
 INTRODUCTION
-============
+------------
 
 Included here are various QuizMaker examples.
 
-  - diffeqs - From a Differential Equations (MATH-40) class
+  - circuits - general Electrical Circuits problems (EECE 211, EECE 311)
 
-  - circuits - general Electrical Circuits problems
+  - control_systems - Control Systems Design (EECE 482)
+
+  - diffeqs - Differential Equations (MATH 40) class
+
+  - eam - Electricity and Magnetism (EECE 375)
 
 AUTHOR
-======
+------
 
 Jeremiah Mahler <jmmahler@gmail.com><br>
 <http://www.google.com/profiles/jmmahler#about>
 
 COPYRIGHT
-=========
+---------
 
 Copyright &copy; 2012, Jeremiah Mahler.  All Rights Reserved.<br>
 This project is free software and released under
