@@ -7,3 +7,4 @@
 .zfproject.xml
 public/pdf-tests/
 log.txt
+*.eps

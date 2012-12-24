@@ -74,6 +74,11 @@ $workspace = '0in';  # student provides their own paper
 
 $answer = <<'ANSWER';
 
+The diagram of what we are solving may help.
+\begin{center}
+\includegraphics[scale=0.5]{img/Gs_y_u}
+\end{center}
+
 First, arrange matrix equations according to what we
 are trying to find ($G(s) = y/u$).
 
