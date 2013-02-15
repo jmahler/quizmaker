@@ -63,6 +63,7 @@ print <<'HEADER1';
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{enumerate}
+\usepackage{tabularx}
 
 \parindent=0pt
 %\usepackage{graphicx}
@@ -88,11 +89,11 @@ my $title = $qzt->{'title'};
 # be sure to double the escapes with double quotes!
 print <<"HEADER2";
 
-\\begin{tabular}{l r}
-Name: \\uline{\\hspace{200pt}} \\hspace{160pt} & $class \\\\
-      & $term \\\\
-      & $title \\\\
-\\end{tabular}
+\\begin{tabularx}{\\textwidth}{l X r}
+Name: \\uline{\\hspace{200pt}} & & $class \\\\
+      & & $term \\\\
+      & & $title \\\\
+\\end{tabularx}
 
 HEADER2
 
