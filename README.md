@@ -99,12 +99,12 @@ AUTHOR
 ======
 
 Jeremiah Mahler <jmmahler@gmail.com><br>
-<http://www.google.com/profiles/jmmahler#about>
+<https://github.com/jmahler/>
 
 COPYRIGHT
 =========
 
-Copyright &copy; 2012, Jeremiah Mahler.  All Rights Reserved.<br>
+Copyright &copy; 2015, Jeremiah Mahler.  All Rights Reserved.<br>
 This project is free software and released under
 the [GNU General Public License][gpl].
 
