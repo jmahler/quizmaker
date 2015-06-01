@@ -5,10 +5,10 @@ $class = 'MATH 40';
 $term = 'Spring 2011';
 $title = 'practice';
 
-$instructions = <<'INSTRUCTONS';
+$instructions = <<'INSTRUCTIONS';
 Solve each problem in the space given.
 No calculators are allowed.
-INSTRUCTONS
+INSTRUCTIONS
 
 @problems = qw(
 problems/arc_length-2010-09-15.pl
