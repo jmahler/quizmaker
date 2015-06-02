@@ -1,18 +1,9 @@
+title = (testing image example)
 
-# This example test uses a problem which includes an image.
-
-$class = '(no class)';
-$term = '(no term)';
-$title = '(testing image example)';
-
-$instructions = <<'INSTRUCTIONS';
+[instructions]
 This test shows how a problem can include an image.
-INSTRUCTIONS
+[instructions]
 
-@problems = qw(
-problems/voltage-resistor.problem
-);
-
-# vim:syntax=perl
-
-1;
+[problems]
+voltage-resistor.prb
+[\problems]

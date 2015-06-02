@@ -1,18 +1,7 @@
+class = EECE 311
+term = Fall 2011
+title = test \#1
 
-# See Makefile for instructions about how to build this test.
-
-$class = 'EECE 311';
-$term = 'Fall 2011';
-$title = 'test \#1';
-
-$instructions = <<'INSTRUCTIONS';
-INSTRUCTIONS
-
-@problems = qw(
-problems/dependent_source-02.problem
-problems/dependent_source-03.problem
-);
-
-# vim:syntax=perl
-
-1;
+[problems]
+dependent_source-02.prb
+[/problems]

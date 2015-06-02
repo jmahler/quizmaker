@@ -4,10 +4,10 @@
 all: all_probs.pdf all_probs-ans.pdf
 
 all_probs.tex: all_probs.test
-	qzm-view_test $< > $@
+	qzm -t $< > $@
 
 all_probs-ans.tex: all_probs.test
-	qzm-view_test --printanswers $< > $@
+	qzm -a -t $< > $@
 
 all_probs.pdf: all_probs.tex
 	rubber --pdf $<

@@ -1,12 +1,17 @@
 
-@tags = ('circuits', 'medium', 'thevenin', 'dependent source',
-	'mesh current analysis');
+[tags]
+circuits
+medium
+thevenin
+dependent source
+mesh current analysis
+[/tags]
 
-$par_time = '00:00:16';
+par_time = 00:00:16
 
-$short_desc = "Thevenin, 1 dependent source";
+short_desc = Thevenin, 1 dependent source
 
-$question = <<'QUESTION';
+[question]
 Find the Th\'{e}venin equivalent of the circuit across
 terminals $a$ and $b$.
 
@@ -14,11 +19,11 @@ terminals $a$ and $b$.
 \includegraphics[scale=0.4]{img/dependent_sources-03}
 \end{center}
 
-QUESTION
+[/question]
 
-$workspace = 'wholepage';
+workspace = wholepage
 
-$answer = <<'ANSWER';
+[answer]
 One strategy for solving this problem is to use mesh current analysis
 to find the The\'{e}venin voltage which is the voltage across R6
 and then modify the equations to find the short circuit current.
@@ -68,18 +73,12 @@ V_{th} &= -49.11 \quad \mbox{[volts]} \\
 i_{sc} &= -19.60 \quad \mbox{[mA]} \\
 R_{th} &= 2.51 \quad \mbox{[k ohm]}
 \end{align*}
-ANSWER
+[/answer]
 
-$author = 
-'Jeremiah Mahler <jmmahler@gmail.com>
-http://www.google.com/profiles/jmmahler#about';
+author = Jeremiah Mahler <jmmahler@gmail.com>
 
-$ref = <<'REF';
+[ref]
 While the author (Jeremiah Mahler) was taking the
 class EECE 311 during Fall 2011 taught by Dr. Hede Ma at CSU Chico
 this problem was given on the first test.
-REF
-
-# vim:syntax=perl
-
-1;
+[\ref]

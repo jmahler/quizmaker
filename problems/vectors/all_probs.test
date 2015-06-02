@@ -1,22 +1,13 @@
-#
-# This test includes all of the vector problems.
-#
-#
+class = Calculus III
+term = Spring 2012
+title = Practice Exam
 
-$class = 'Calculus III';
-$term = 'Spring 2012';
-$title = 'Practice Exam';
-
-$instructions = <<'INSTRUCTONS';
+[instructions]
 Solve each of the problems using blank paper.\\
 Calculators can be used but no cell phones or other
 "smart" devices are allowed.
-INSTRUCTONS
+[/instructions]
 
-@problems = qw(
-problems/pos_vec_ellipse-schey.pl
-);
-
-# vim:syntax=perl
-
-1;
+[problems]
+pos_vec_ellipse-schey.prb
+[/problems]
