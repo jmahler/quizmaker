@@ -1,0 +1,28 @@
+class = EECE 555
+term = Fall 2013
+title = Exam II
+professor = Dr. Kredo
+
+[instructions]
+During this examination:
+\begin{itemize}
+\item You may not use any books, notes, calculators, or other material.
+You must work individually.
+\item Use the back of exam pages if you need scratch paper or run out of
+space.  Be sure to indicate if any important work is located on the back
+of a page.
+\item Leave your answer as a mathematical expression if you cannot find
+the numerical solution.
+\item Show your work for full credit.  Correct answers with no work will
+receive little credit.
+\item Read each question carefully before you begin answering it.
+\item If you need clarification on a problem, raise your hand and
+someone will assist you.
+\item Make sure you have all 7 pages of the exam, counting this page,
+before you begin.
+\end{itemize}
+[/instructions]
+
+[problems]
+network-address-01.prb
+[/problems]
