@@ -10,8 +10,8 @@ wholepage = true
 
 [question]
 For these questions, IP addresses are provided in dotted decimal form
-and, within prenthesis, in dotted hexadecimal form.
-
+and, within prenthesis, in dotted hexadecimal form. \\
+\\
 (a) [6 points] For the address and subnet mask
 \verb+72.14.177.210 (48.0E.B1.D2)/15+, find the broadcast address and
 the network address in dotted decimal or hexadecimal form.
