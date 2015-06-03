@@ -86,10 +86,12 @@ Address & Next Hop \\
 workspace = 0in
 
 [answer]
+\begin{tabular}{l}
 (a) \verb+48.0F.FF.FF+ \\
 (b) \verb+48.0E.00.01 - 48.0F.FF.FE+ \\
 (c) N, Y, Y, Y, N \\
 (d) A, E, A, A
+\end{tabular}
 [/answer]
 
 [author]
