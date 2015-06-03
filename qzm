@@ -151,6 +151,10 @@ print '
 
 my @problems = @{$qzt->{problems}};
 
+unless (@problems) {
+	die "This test has no problems, aborting";
+}
+
 for (my $i = 0; $i < @problems; $i++) {
 	my $qzp = parse_file($problems[$i]);
 
