@@ -1,27 +1,29 @@
+DIAGRAMS_IN = $(shell ls *.ps)
+DIAGRAMS = $(DIAGRAMS_IN:.ps=.pdf)
 
-DIAGRAMS = dependent_source-02-diagram.pdf voltage-resistor-diagram.pdf
+TESTS_IN = $(shell ls *.test)
+TESTS = $(TESTS_IN:.test=.pdf)
+TESTS_ANS = $(TESTS_IN:.test=-ans.pdf)
 
-all: simple-circuits.pdf simple-circuits-ans.pdf
+PROBLEMS = $(shell ls *.prb)
 
-%-ans.tex: %.test *.prb
+all: $(DIAGRAMS) $(TESTS) $(TESTS_ANS)
+
+# xcircuit diagrams
+%.pdf: %.ps
+	ps2epsi $< $@
+	epspdf $<
+
+# tests
+%-ans.tex: %.test $(PROBLEMS) $(DIAGRAMS)
 	qzm -a -t $< > $@
 
-%.tex: %.test *.prb
+%.tex: %.test $(PROBLEMS) $(DIAGRAMS)
 	qzm -t $< > $@
-
-%.eps: %.ps
-	ps2epsi $< $@
-
-%.pdf: %.eps
-	epspdf $<
 
 %.pdf: %.tex
 	pdflatex $<
 	pdflatex $<
-
-simple-circuits.pdf: simple-circuits.tex $(DIAGRAMS)
-
-simple-circuits-ans.pdf: simple-circuits-ans.tex $(DIAGRAMS)
 
 clean:
 	-rm -f *.log *.aux *.dvi *.pdf

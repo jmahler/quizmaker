@@ -2,5 +2,6 @@ title = Simple Circuits
 
 [problems]
 voltage-resistor.prb
+voltage-divider.prb
 dependent_source-02.prb
 [\problems]

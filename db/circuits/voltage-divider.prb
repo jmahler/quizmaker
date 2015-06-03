@@ -1,0 +1,34 @@
+[tags]
+voltage divider
+Ohms Law
+easy
+[/tags]
+
+par_time = 00:01:00
+
+short_desc = Find the equation of a voltage divider.
+
+[question]
+Calculate Vout in terms of Vin, R1 and R2.
+
+\vspace{0.2in}
+\begin{center}
+%\begin{figure}[!hbtp]
+\includegraphics[scale=0.7]{voltage-divider-diagram}
+%\end{figure}
+\end{center}
+
+[/question]
+
+workspace = 1in
+
+[answer]
+It is a common voltage divider:
+\begin{align*}
+V_{out} = V_{in} \frac{R2}{R1 + R2}
+\end{align*}
+[/answer]
+
+[author]
+Jeremiah Mahler <jmmahler@gmail.com>
+[/author]
