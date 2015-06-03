@@ -1,9 +1,6 @@
-title = (testing image example)
-
-[instructions]
-This test shows how a problem can include an image.
-[instructions]
+title = Simple Circuits
 
 [problems]
 voltage-resistor.prb
+dependent_source-02.prb
 [\problems]

@@ -1,13 +1,13 @@
 
 [tags]
 circuits
-medium
-thevenin
+thevenin equivalent
 dependent source
 mesh current analysis
+difficulty:medium
 [/tags]
 
-par_time = 00:00:16
+par_time = 15 minutes
 
 short_desc = Thevenin, 1 dependent source
 
@@ -16,7 +16,7 @@ Find the Th\'{e}venin equivalent of the circuit across
 terminals $a$ and $b$.
 
 \begin{center}
-\includegraphics[scale=0.4]{img/dependent_sources-03}
+\includegraphics[scale=0.7]{dependent_source-02-diagram}
 \end{center}
 
 [/question]
@@ -25,7 +25,7 @@ workspace = wholepage
 
 [answer]
 One strategy for solving this problem is to use mesh current analysis
-to find the The\'{e}venin voltage which is the voltage across R6
+and find the Th\'{e}venin voltage which is the voltage across R6
 and then modify the equations to find the short circuit current.
 
 To begin finding the open circuit voltage, perform mesh current analysis.
@@ -78,7 +78,6 @@ R_{th} &= 2.51 \quad \mbox{[k ohm]}
 author = Jeremiah Mahler <jmmahler@gmail.com>
 
 [ref]
-While the author (Jeremiah Mahler) was taking the
-class EECE 311 during Fall 2011 taught by Dr. Hede Ma at CSU Chico
-this problem was given on the first test.
+This problem was on the first test of EECE 311 during
+the Fall of 2011 taught by Dr. Hede Ma at CSU Chico.
 [\ref]
