@@ -1,20 +1,30 @@
+DIAGRAMS_IN = $(shell ls *.ps)
+DIAGRAMS = $(DIAGRAMS_IN:.ps=.pdf)
 
-.PHONY: clean
+TESTS_IN = $(shell ls *.test)
+TESTS = $(TESTS_IN:.test=.pdf)
+TESTS_ANS = $(TESTS_IN:.test=-ans.pdf)
 
-all: all_probs.pdf all_probs-ans.pdf
+PROBLEMS = $(shell ls *.prb)
 
-all_probs.tex: all_probs.test
-	qzm -t $< > $@
+all: $(DIAGRAMS) $(TESTS) $(TESTS_ANS)
 
-all_probs-ans.tex: all_probs.test
+# xcircuit diagrams
+%.pdf: %.ps
+	ps2epsi $< $@
+	epspdf $<
+
+# tests
+%-ans.tex: %.test $(PROBLEMS) $(DIAGRAMS)
 	qzm -a -t $< > $@
 
-all_probs.pdf: all_probs.tex
-	rubber --pdf $<
+%.tex: %.test $(PROBLEMS) $(DIAGRAMS)
+	qzm -t $< > $@
 
-all_probs-ans.pdf: all_probs-ans.tex
-	rubber --pdf $<
+%.pdf: %.tex
+	pdflatex $<
+	pdflatex $<
 
 clean:
-	-rm -f *.log *.aux *.dvi *.pdf *.tex
-
+	-rm -f *.log *.aux *.dvi *.pdf
+	-rm -f *.tex
