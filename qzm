@@ -31,10 +31,10 @@ die "Test file must be defined ('-t')." unless $test_file;
 my $vals = parse_file($test_file);
 
 my $qzt = {
-	'instructions' => "instructions=undefined",
-	'class' => "class=undefined",
-	'term' => "term=undefined",
-	'title' => "title=undefined",
+	'instructions' => "",
+	'class' => "",
+	'term' => "",
+	'title' => "",
 	%$vals,
 };
 
