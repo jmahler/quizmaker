@@ -4,5 +4,18 @@ title = Firmware Test Engineer Interview
 [/instructions]
 
 [problems]
+interview/why_work_for_us.prb
 embedded_systems/signed_unsigned.prb
+interview/five_year_goals.prb
+interview/biggest_weakness.prb
+interview/biggest_failure.prb
 [/problems]
+
+[author]
+Jeremiah Mahler <jmmahler@gmail.com>
+[/author]
+
+[ref]
+Based on an interview for a Firmware Test Engineer position
+that the author had in January 2014.
+[/ref]
