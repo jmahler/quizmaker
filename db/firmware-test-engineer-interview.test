@@ -8,6 +8,7 @@ interview/why_work_for_us.prb
 embedded_systems/signed_unsigned.prb
 interview/five_year_goals.prb
 compsci/memory_leak.prb
+compsci/conv64to8.prb
 interview/biggest_weakness.prb
 interview/biggest_failure.prb
 [/problems]
