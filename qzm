@@ -101,6 +101,10 @@ sub generate_tex {
 \usepackage{amsmath}
 \usepackage{enumerate}
 \usepackage{tabularx}
+\usepackage{listings}
+\lstset{numbers=left,
+		basicstyle=\footnotesize,
+		xleftmargin=0.3in}
 
 \parindent=0pt
 %\usepackage{graphicx}
