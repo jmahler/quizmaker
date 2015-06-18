@@ -1,0 +1,12 @@
+title = Linux Test
+
+[instructions]
+[/instructions]
+
+[problems]
+linux_abc.prb
+[/problems]
+
+[author]
+Jeremiah Mahler <jmmahler@gmail.com>
+[/author]

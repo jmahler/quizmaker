@@ -1,0 +1,52 @@
+[tags]
+interview
+linux
+[/tags]
+
+par_time = 5 minutes
+
+short_desc = A Linux command for every letter in the alphabet
+
+[question]
+For every letter in the alphabet (A-Z), write a Linux command that
+starts with that letter.
+
+\begin{tabular}{llll}
+A: \hspace{2in} & N: \hspace{2in} \\ 
+B: \hspace{2in} & O: \hspace{2in} \\ 
+C: \hspace{2in} & P: \hspace{2in} \\ 
+D: \hspace{2in} & Q: \hspace{2in} \\ 
+E: \hspace{2in} & R: \hspace{2in} \\ 
+F: \hspace{2in} & S: \hspace{2in} \\ 
+G: \hspace{2in} & T: \hspace{2in} \\ 
+H: \hspace{2in} & U: \hspace{2in} \\ 
+I: \hspace{2in} & V: \hspace{2in} \\ 
+J: \hspace{2in} & W: \hspace{2in} \\ 
+K: \hspace{2in} & X: \hspace{2in} \\ 
+L: \hspace{2in} & Y: \hspace{2in} \\ 
+M: \hspace{2in} & Z: \hspace{2in} \\ 
+\end{tabular}
+[/question]
+
+[answer]
+
+\begin{tabular}{llll}
+A: ash, awk, apt-get, as, adduser		&N: netcat, netstat, no, nasm \\
+B: bc, bash								&O: objcopy, objdump, od \\
+C: cat, cal, cvs, cc, chown				&P: ps, powertop, perf, ping \\
+D: date, dd, df, dpkg, diff				&Q: qemu, quilt \\
+E: emacs, exec							&R: rm, rsync \\
+F: free, fals, fakeroot, find			&S: ssh, scp, sh, sed, svn, sleep \\
+G: git, gcc, gdb						&T: tail, telnet, top, tex, true \\
+H: hexedit, host, hostname 				&U: umount, useradd, userdel, uname \\
+I: ifup, ip, ifconfig					&V: vi \\
+J: jar, java							&W: who, whoami, whois \\
+K: kernelshark, korn					&X: xset, xargs, xterm \\
+L: less, latex, lisp					&Y: yes \\
+M: more, md5sum, mount, mutt			&Z: zcat, zip
+\end{tabular}
+
+Score: (23-26==A, 20-22==B)
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
