@@ -1,0 +1,13 @@
+title = Computer Science Test Problems
+
+[instructions]
+[/instructions]
+
+[problems]
+memory_leak.prb
+conv64to8.prb
+first_primes.prb
+insertion_sort.prb
+[/problems]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>

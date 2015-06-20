@@ -1,0 +1,88 @@
+[tags]
+interview
+C
+sort
+insertion sort
+[/tags]
+
+par_time = 00:20:00
+
+short_desc = Insertion sort.
+
+[question]
+
+(a) Draw the steps that would be performed to sort the
+following array using the \emph{Insertion Sort} algorithm.
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+5 & 3 & 7 & 2 \\
+\hline
+\end{tabular}
+\vspace{1.25in}
+
+(b) Give three advantages and/or disadvantages of \emph{Insertion Sort}
+algorithm.\\
+\vspace{1in}
+
+(c) Write an \emph{Insertion Sort} function in C.
+\vspace{4in}
+[/question]
+
+
+[answer]
+
+(a)
+\begin{verbatim}
+5 | 3   7   2    (3 < 5)
+3   5 | 7   2    (5 < 7)
+3   5   7 | 2    (2 < 7)
+3   5   _ | 7    (2 < 5)
+3   _   5 | 7    (2 < 5)
+2   3   5 | 7    (2 < 3)
+\end{verbatim}
+
+(b)
+\begin{itemize}
+\item Simple.  Algorithm is simple to implement.
+\item Storage.  Uses a constant amount of storage space.
+\item Performance.  Best case, when array is already sorted, is O($n$).
+  Worst case, when array is reverse sorted, is O($n^2$).
+\end{itemize}
+
+(c)
+\begin{lstlisting}
+void sort(char **xs, size_t sz)
+{
+	size_t i, j;
+
+	for (i = 1; i < sz; i++) {
+		char *key = xs[i];
+
+		for (j = i; j > 0 && xs[j - 1] > key; j--) {
+			xs[j] = xs[j - 1];
+		}
+		xs[j] = key;
+	}
+}
+\end{lstlisting}
+
+Another alternative:
+\begin{lstlisting}
+void sort(char **xs, int sz)
+{
+	int i, j;
+
+	for (i = 1; i < sz; i++) {
+		char *key = xs[i];
+
+		for (j = i - 1; j >= 0 && xs[j] > key; j--) {
+			xs[j + 1] = xs[j];
+		}
+		xs[j + 1] = key;
+	}
+}
+\end{lstlisting}
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
