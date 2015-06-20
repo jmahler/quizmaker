@@ -178,9 +178,6 @@ for (my $i = 0; $i < @problems; $i++) {
 	print "\\begin{minipage}{\\textwidth}\n";
 	print "\n";
 
-	# Add the location where the problem file was sourced from
-	print "% problem file: '" . $qzp->{file} . "'\n";
-
 	print "\\question ";
 	#print "$n.)  ";
 
