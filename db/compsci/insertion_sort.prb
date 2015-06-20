@@ -9,6 +9,8 @@ par_time = 00:20:00
 
 short_desc = Insertion sort.
 
+workspace = wholepage
+
 [question]
 
 (a) Draw the steps that would be performed to sort the
