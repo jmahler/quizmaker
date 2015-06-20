@@ -175,7 +175,7 @@ for (my $i = 0; $i < @problems; $i++) {
 	# Add Vim folds to make the .tex source easier to navigate.
 	print "% {{{ Q" . ($i + 1) . "\n";
 
-	print "\\begin{samepage}\n";
+	print "\\begin{minipage}{\\textwidth}\n";
 	print "\n";
 
 	# Add the location where the problem file was sourced from
@@ -199,7 +199,7 @@ for (my $i = 0; $i < @problems; $i++) {
 		print "\n";
 	}
 
-	print "\n\\end{samepage}\n";
+	print "\n\\end{minipage}\n";
 
 	# If the problem workspace needs the 'wholepage' 
 	# do this by adding a pagebreak.
