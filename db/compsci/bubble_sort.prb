@@ -1,0 +1,82 @@
+[tags]
+interview
+C
+sort
+bubble sort
+[/tags]
+
+par_time = 00:20:00
+
+short_desc = Bubble sort.
+
+workspace = wholepage
+
+[question]
+
+(a) Draw the steps that would be performed to sort the
+following array using the \emph{Bubble Sort} algorithm.
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+5 & 3 & 7 & 2 \\
+\hline
+\end{tabular}
+\vspace{1.25in}
+
+(b) Give three advantages/disadvantages of \emph{Bubble Sort}
+algorithm.\\
+\vspace{1in}
+
+(c) Write an \emph{Bubble Sort} function in C.
+\vspace{4in}
+[/question]
+
+[answer]
+
+(a)
+\begin{verbatim}
+(first pass)
+5 3 7 2    (3 < 5)
+3 5 7 2    (2 < 7)
+3 5 2 7
+(second pass)
+3 5 2 7    (2 < 5)
+3 2 5 7
+(third pass)
+3 2 5 7    (2 < 3)
+2 3 5 7
+(done)
+\end{verbatim}
+
+(b)
+\begin{itemize}
+\item Simple.  Algorithm is simple to implement.
+\item Storage.  Uses a constant amount of storage space.
+\item Performance.  Very poor.  Can require many passes through
+the entire array.
+\end{itemize}
+
+(c)
+\begin{lstlisting}
+void sort(char **lines, size_t size)
+{
+	size_t i;
+	char change;
+	char *tmp;
+
+	do {
+		change = 0;
+		for (i = 1; i < size; i++) {
+			if (strcmp(lines[i - 1], lines[i]) > 0) {
+				change = 1;
+				tmp = lines[i];
+				lines[i] = lines[i - 1];
+				lines[i - 1] = tmp;
+			}
+		}
+	} while (change);
+}
+\end{lstlisting}
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
