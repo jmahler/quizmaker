@@ -1,0 +1,22 @@
+[tags]
+networking
+interview
+[/tags]
+
+short_desc = How many bytes in a MAC address?
+par_time = 1 minutes
+
+[question]
+How many bytes are there in a MAC address?
+[/question]
+
+workspace = 1in
+
+[answer]
+Given a MAC address such as: \verb+ff:ff:ff:ff:ff:ff+, each
+hex value represents 4 bits.  Each group is 8 bits which is
+one byte.  There are 6 groups so there are \textbf{8 bytes} or
+\textbf{48 bits}.
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>.
