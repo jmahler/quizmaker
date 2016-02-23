@@ -10,7 +10,7 @@ my $test_file;
 my $prog_name = (split /\//, $0)[-1];  # name w/o directories
 my $usage = <<"USAGE";
   USAGE:
-    $prog_name -t <test file> [-a]
+    $prog_name -t <test file> [-a] > test.tex
 
   OPTIONS:
     -t     Test definition file.
@@ -21,12 +21,12 @@ for (my $i = 0; $i < @ARGV; $i++) {
 	my $arg = $ARGV[$i];
 	if ($arg eq '-t') {
 		$test_file = $ARGV[$i + 1]
-			or die "Missing argument for '-t' option";
+			or die "$usage\nMissing argument for '-t' option.\n";
 	} elsif ($arg eq '-a') {
 		$printanswers = 1;
 	}
 }
-die "Test file must be defined ('-t')." unless $test_file;
+die "$usage\nTest file must be defined ('-t').\n" unless $test_file;
 
 my $vals = parse_file($test_file);
 
