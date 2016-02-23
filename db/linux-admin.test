@@ -8,6 +8,7 @@ linux/linux_abc.prb
 networking/osi-levels-01.prb
 networking/osi-levels-02.prb
 networking/network-address-01.prb
+math/estimate224.prb
 [/problems]
 
 [author]
