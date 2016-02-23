@@ -1,0 +1,30 @@
+[tags]
+networking
+interview
+[/tags]
+
+short_desc = Find the number of available IPs
+par_time = 1 minute
+
+[question]
+Given a IPv4 network with a mask of \verb+/23+,
+how many ip addresses are available?
+[/question]
+
+workspace = 1in
+
+[answer]
+The mask masks off the highest octets.  For \verb+\23+
+the lowest octet plus one more bit is available.
+For one octet there are a maximum of 256 possible addresses (0 - 255).
+Including one more bit results in a maximum of
+\textbf{512 addresses} ($256 \cdot 2$).
+However, this does not account for the broadcast addresses in the
+lowest octet of 0 and 255.
+Therefore, there are \textbf{508 addresses} ($(256 - 2) \cdot 2$)
+available if the broadcast addresses are excluded.
+[/answer]
+
+[author]
+Jeremiah Mahler <jmmahler@gmail.com>
+[/author]
