@@ -1,24 +1,16 @@
-DIAGRAMS_IN = $(shell ls *.ps)
-DIAGRAMS = $(DIAGRAMS_IN:.ps=.pdf)
-
 TESTS_IN = $(shell ls *.test)
 TESTS = $(TESTS_IN:.test=.pdf)
 TESTS_ANS = $(TESTS_IN:.test=-ans.pdf)
 
 PROBLEMS = $(shell ls *.prb)
 
-all: $(DIAGRAMS) $(TESTS) $(TESTS_ANS)
-
-# xcircuit diagrams
-%.pdf: %.ps
-	ps2epsi $< $@
-	epspdf $<
+all: $(TESTS) $(TESTS_ANS)
 
 # tests
-%-ans.tex: %.test $(PROBLEMS) $(DIAGRAMS)
+%-ans.tex: %.test $(PROBLEMS)
 	qzm -a -t $< > $@
 
-%.tex: %.test $(PROBLEMS) $(DIAGRAMS)
+%.tex: %.test $(PROBLEMS)
 	qzm -t $< > $@
 
 %.pdf: %.tex
