@@ -5,6 +5,7 @@ title = Linux Test
 
 [problems]
 linux_abc.prb
+inode-01.prb
 [/problems]
 
 [author]

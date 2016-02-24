@@ -1,0 +1,35 @@
+[tags]
+interview
+linux
+file system
+[/tags]
+
+par_time = 1 minute
+
+short_desc = Command for displaying inode
+
+[question]
+(a) What command is used to display information about an inode?
+\vspace*{0.5in}
+
+(b) What information is stored in an inode?
+\vspace*{1.5in}
+[/question]
+
+[answer]
+
+(a) \verb+stat+
+
+(b) 
+An inode stores metadata about a file such as:
+\begin{itemize}
+\item name
+\item permissions, user and group
+\item inode number, which is unique to a disc
+\item size
+\item creation time
+\item last access time (if \verb+noatime+ mount option wasn't used)
+\end{itemize}
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
