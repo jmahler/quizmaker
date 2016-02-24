@@ -1,0 +1,27 @@
+[tags]
+interview
+linux
+operating systems
+[/tags]
+
+par_time = 1 minute
+
+short_desc = speed of operations
+
+workspace = 0.5in
+
+[question]
+Rank the following operations from fastest to slowest:
+\begin{enumerate}
+\item Read from CPU register.
+\item Disc seek.
+\item Context switch.
+\item Read from main memory.
+\end{enumerate}
+[/question]
+
+[answer]
+From fastest to slowest is: 1, 4, 3, 2.
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
