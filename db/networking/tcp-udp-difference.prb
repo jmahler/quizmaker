@@ -1,0 +1,24 @@
+[tags]
+networking
+sockets
+interview
+[/tags]
+
+short_desc = Difference between TCP and UDP?
+par_time = 1 minute
+
+[question]
+Explain the difference between TCP and UDP.
+[/question]
+
+workspace = 1in
+
+[answer]
+The difference between TCP and UDP sockets has to do with reliability.
+When a packet is sent using TCP it expects an acknowledgment (ACK) and
+if it doesn't receive one the packet is re-sent.
+When a packet is sent using UDP there is no acknowledgment so if it is
+lost it is not re-sent.
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>.
