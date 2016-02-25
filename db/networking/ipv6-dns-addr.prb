@@ -1,0 +1,28 @@
+[tags]
+interview
+networking
+dns
+IPv6
+[/tags]
+
+short_desc = DNS record for IPv6 address?
+par_time = 30 seconds
+
+[question]
+(a) What letters are used for an IPv6 DNS address record? \\
+\vspace*{0.25in} \\
+(b) Explain the meaning behind these letters. \\
+\vspace*{0.5in}
+[/question]
+
+workspace = 0in
+
+[answer]
+
+(a) An IPv6 DNS address record is: \verb+AAAA+ \\
+(b) An IPv4 DNS address record is \verb+A+ and has 4 bytes.
+An IPv6 DNS address record has four letters because
+it is four times the size (16 bytes).
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>.
