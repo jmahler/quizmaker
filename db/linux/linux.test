@@ -9,6 +9,7 @@ inode-01.prb
 kill.prb
 user-run-root.prb
 blank-lines.prb
+columns.prb
 [/problems]
 
 [author]
