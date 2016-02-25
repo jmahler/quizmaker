@@ -8,6 +8,7 @@ linux_abc.prb
 inode-01.prb
 kill.prb
 user-run-root.prb
+blank-lines.prb
 [/problems]
 
 [author]
