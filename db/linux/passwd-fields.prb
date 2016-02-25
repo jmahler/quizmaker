@@ -1,0 +1,31 @@
+[tags]
+interview
+linux
+passwd
+[/tags]
+
+par_time = 2 minutes
+
+short_desc = What fields are in /etc/passwd
+
+[question]
+Which of the following fields are \emph{not} represented in
+\verb+/etc/passwd+?
+
+\begin{enumerate}
+\item comment
+\item home
+\item umask
+\item gid
+\item name
+\item preferred language
+\item shell
+\item uid
+\end{enumerate}
+[/question]
+
+[answer]
+umask, preferred language
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>
