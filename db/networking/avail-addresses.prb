@@ -1,0 +1,51 @@
+[tags]
+interview
+networking
+IPv6
+magnitude
+[/tags]
+
+short_desc = Estimate the number of available addresses
+par_time = 5 minutes
+
+[question]
+For the following questions, assume all possible addresses are available
+(ignore private networks, broadcast, etc).
+Exact answers are not required, estimate to within the same order
+of magnitude. \\
+
+(a) How many addresses are available in IPv4? \\
+\vspace*{0.25in} \\
+(b) How many addresses are available in IPv6? \\
+\vspace*{0.5in}
+[/question]
+
+workspace = 0in
+
+[answer]
+
+(a) \verb+255.255.255.255+, 4 bytes, 32 bits
+\begin{align*}
+2^{32} &= 2^{10} \cdot 2^{10} \cdot 2^{10} \cdot 2^{4} \\
+       &\approx 1,000,000,000 \cdot 4 \\
+       &\approx 4 \text{billion}
+\end{align*}
+
+The exact answer is 4294967296, or 4.3 billion, so 4 billion is
+correct since it is within the same order of magnitude. \\
+
+(b) \verb+ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff+, 16 bytes, 128 bits
+
+\begin{align*}
+2^{128} &= 2^{10^{12}} \cdot 2^{8} \\
+		&\approx 1,000,000,000,000,000,000,000,000,000,000,000,000 \cdot 256 \\
+		&\approx 256,000,000,000,000,000,000,000,000,000,000,000,000 \\
+		&\approx 256 \cdot 10^{36} \\
+		&\approx 256 \; \text{undecillion} \\
+		&\approx 256 \; \text{billion billion billion billion}
+\end{align*}
+
+This is more than the number of stars in the universe!
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>.

@@ -8,4 +8,5 @@ mac-bytes.prb
 available-ips.prb
 tcp-udp-difference.prb
 ipv6-dns-addr.prb
+avail-addresses.prb
 [/problems]
