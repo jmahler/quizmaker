@@ -1,0 +1,26 @@
+[tags]
+interview
+linux
+chmod
+[/tags]
+
+par_time = 30 seconds
+
+short_desc = bits in user group
+
+[question]
+
+(a) How many bits are there in the user permissions field of a file? \\
+\vspace*{0.25in} \\
+(b) What do these bits represent? \\
+\vspace*{0.25in}
+[/question]
+
+[answer]
+
+(a) There are \textbf{3 bits}. \\
+(b) Starting from the most significant bit, they represent read(r),
+write(w) and execute(x).
+[/answer]
+
+author = Jeremiah Mahler <jmmahler@gmail.com>

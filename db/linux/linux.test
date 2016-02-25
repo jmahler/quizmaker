@@ -10,6 +10,7 @@ kill.prb
 user-run-root.prb
 blank-lines.prb
 columns.prb
+chmod-bits.prb
 [/problems]
 
 [author]
