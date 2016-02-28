@@ -10,6 +10,7 @@ networking/osi-levels-02.prb
 networking/network-address-01.prb
 math/estimate224.prb
 operating_systems/operation-speed.prb
+system_design/count.prb
 [/problems]
 
 [author]
