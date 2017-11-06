@@ -73,8 +73,8 @@ To run the programs they need to be accessible on a users
 $PATH and the libraries must be found by Perl ($PERL5LIB).
 
 One solution, which is well suited for development,
-is to unpack the package in to the users directory such as
-~/quizmaker/ and then to link to the needed parts inside.
+is to unpack the package in to the users $HOME directory, such as
+~/quizmaker/, and then to link to the needed parts inside.
 
 If the user has the directory ~/bin, which is searchable in
 the environment variable $PATH, then links can be added to
