@@ -214,7 +214,7 @@ for (my $i = 0; $i < @problems; $i++) {
 	print "% {{{ solution\n";
 	print "\\begin{solution}\n";
 
-	# print the anser
+	# print the answer
 	# And also fix the }}} in equations which conflict with Vim folds
 	my $tmp = $qzp->{answer};	
 	$tmp =~ s/}}}/} } }/g;
