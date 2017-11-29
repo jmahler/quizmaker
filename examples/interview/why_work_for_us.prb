@@ -1,0 +1,22 @@
+
+tags:
+    - interview
+
+time: 1 minute
+
+short_desc: Why do you want to work for us?
+
+question: |
+    Why do you want to work for us?
+     
+    \vspace*{2in}
+     
+
+answer: |-
+    The interviewee should know the company, know what they like about it,
+    and be able to give several reasons why they would be a good addition
+    to the company.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

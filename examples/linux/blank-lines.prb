@@ -1,0 +1,23 @@
+tags:
+    - interview
+    - linux
+    - shell
+    - grep
+
+time: 30 seconds
+
+short_desc: Command to count non-blank lines
+
+question: |
+    Write the command to count the number of non-blank lines in a file.
+
+    \vspace*{0.5in}
+
+answer: |
+    \begin{verbatim}
+    grep -v '^$' file.txt | wc -l
+    \end{verbatim}
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

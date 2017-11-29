@@ -1,0 +1,36 @@
+tags:
+    - interview
+
+time: "00:01:00"
+
+short_desc: What is your biggest weakness?
+
+question: |
+    What is your biggest weakness?
+    
+    \vspace*{2in}
+
+answer: |
+    The response should be genuine, not "I'm a perfectionist." or
+    some B.S. answer.
+
+    (e.g.)
+
+    One weakness I have is that I expect a project to use the best
+    solution available.
+    Unfortunately, things do not always work this way.
+    The solution might be too drastic.
+    It might result in a lot of work being wasted.
+    It might make someone look bad.
+    Or maybe I have been arguing too much and they are just tired of
+    arguing with me.
+
+    I still try to argue for the best solutions, but I have become
+    more diplomatic about it.  Not all battles are worth fighting.
+    And I try to be positive and encouraging.
+    One of my favorite books on this subject is 
+    "How to Win Friends and Influence People" by Dale Carnegie.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

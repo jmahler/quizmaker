@@ -1,0 +1,14 @@
+title: Linux Admin Test
+
+problem_files:
+    - linux/linux_abc.prb
+    - networking/osi-levels-01.prb
+    - networking/osi-levels-02.prb
+    - networking/network-address-01.prb
+    - math/estimate224.prb
+    - operating_systems/operation-speed.prb
+    - system_design/count.prb
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

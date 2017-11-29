@@ -1,0 +1,33 @@
+tags:
+    - interview
+    - linux
+    - permissions
+    - chmod
+
+time: 30 seconds
+
+short_desc: user running command as root
+
+question: |
+    How do you configure an executable to run as root when it is run
+    by a non-root user?
+
+    \vspace*{1.5in}
+
+answer: |
+    When an executable is run under Linux, if either the user or group id of
+    that user do not match that of the file, they are cleared before
+    executing.  However, the set bit can be used to instead set them to
+    the user or group id of the file.
+
+    For example, the following command will set both the user and group
+    to that of the file, if they do not match the user, when it is executed.
+    If the user or group were root, it would run as root.
+
+    \begin{verbatim}
+    chmod ug+s file
+    \end{verbatim}
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

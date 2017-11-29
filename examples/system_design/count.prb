@@ -1,0 +1,94 @@
+tags:
+    - interview
+    - system design
+    - memory
+
+time: 15 minutes
+
+short_desc: Count the numbers in a file using limited memory.
+
+question: |
+    Given an input file with 4 billion integers.  Provide an algorithm
+    to generate a number which is not in the file.  Assume you only
+    have 10 MB of memory.
+
+    \vspace*{4 in}
+
+    \pagebreak
+
+answer: |
+    \begin{lstlisting}
+    #include <stdio.h>
+    #include <string.h>
+
+    #if 1
+    #define INT_MAX 3
+    #define INT_MIN 0
+    #endif
+
+    #ifndef INT_MAX
+    #include <limits.h>
+    #endif
+
+    /* 10 MB, 10 MB / 4 B ~= 2.5 M */
+    /*#define RANGE 2500000*/
+    #define RANGE 1000000
+
+    int main(int argc, char *argv[]) {
+        char *file;
+        FILE *fd;
+        int x;
+        int tmp[RANGE];
+        
+        /* check arguments */
+        if (argc != 2) {
+            fprintf(stderr, "usage: %s <file>\n", argv[0]);
+            return 1;
+        }
+        file = argv[1];
+
+        fd = fopen(file, "r");
+        if (fd == NULL) {
+            perror("fopen");
+            return 1;
+        }
+
+        /* for each range */
+        for (int rs = INT_MIN; rs <= INT_MAX; rs += RANGE) {
+            int range;
+            if (rs + RANGE <= INT_MAX) {
+                range = RANGE;
+            } else {
+                range = INT_MAX - rs + 1;
+            }
+
+            fseek(fd, 0, SEEK_SET);
+
+            /* reset counters to zero */
+            memset(tmp, 0, range*sizeof(*tmp));
+
+            /* for all the ints in the file ... */
+            while (fscanf(fd, "%d", &x) != EOF) {
+                if (x >= rs && x < rs + range) {
+                    /* count an occurance in this range */
+                    tmp[x - rs]++;
+                }
+            }
+
+            /* if we found any missing numbers, display them */
+            for (int i = 0; i < range; i++) {
+                if (tmp[i] == 0) {
+                    printf("%d\n", i + rs);
+                }
+            }
+        }
+
+        fclose(fd);
+
+        return 0;
+    }
+    \end{lstlisting}
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

@@ -1,0 +1,44 @@
+tags:
+    - interview
+    - behavioral
+
+time: "00:01:00"
+
+short_desc: Tell me about a time you failed.
+
+question: |
+    Tell me about a time you failed.
+    
+    \vspace*{2in}
+
+answer: |-
+    Should have some story about a real failure along with what
+    has been done to address that failure in the future.
+
+    (e.g.)
+
+    My biggest failure was when I got a D in my Electromagnetics class.
+
+    That semester I had two classes which were very tough.  E\&M and
+    Embedded Systems.  E\&M just took lots of hours.  But the Embedded
+    Systems class took lots of hours just to get projects working and
+    if it didn't work it was a failing grade.
+
+    I remember I spent my entire spring break, non-stop, trying to get
+    one of the projects working and it still wasn't done by the end.
+
+    It consisted of an ARM discovery board which communicated to a CPLD
+    using SPI, which would them perform some operation on the data and
+    send it back over SPI to be displayed on an LCD.
+
+    I ended up being one of two people to actually get all the projects
+    working in that class.
+
+    The professor of the Embedded Systems class is one of my favorites,
+    so I still want to takes his classes.  But when I do I try to avoid
+    many other heavy classes in the same semester.
+    And I have never run in to that situation again, thankfully.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

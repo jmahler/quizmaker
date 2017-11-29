@@ -1,0 +1,87 @@
+tags:
+    - embedded systems
+    - integers
+    - 2s compliment
+    - interview
+
+time: "10:00"
+
+short_desc: Plot magnitude of a 16-bit numbers.
+
+question: |
+    Plot the magnitude of both a 16-bit signed number and
+    a 16-bit unsigned number.
+
+    \vspace*{4in}
+
+answer: |
+    The unsigned number is simply the integer value and
+    ranges from $0$ to ($2^{16} - 1$).
+
+    The signed number involves 2's compliment where the
+    highest bit is set when the number is negative.
+
+    To figure out the range, first find the function for $n$
+    in a simple case where the answers are obvious.
+    For example, when $n = 2$.
+
+    \begin{verbatim}
+             n = 2
+
+         unsigned   signed
+    ---  --------   ------
+    0 0     0         0
+    0 1     1         1
+    1 0     2        -2
+    1 1     3        -1
+    \end{verbatim}
+
+    From this it is clear that the range is from -2 to 1 when $n = 2$.
+    Therefore the function for unsigned numbers is:
+
+    \begin{align*}
+    \left( -\frac{2^n}{2} \right) \quad &\text{to} \quad \left( \frac{2^n}{2} - 1 \right)
+    \end{align*}
+
+    It can also be re-arranged in to an alternate form.
+
+    \begin{align*}
+    \left( -2^n \cdot 2^{-1} \right) \quad &\text{to} \quad \left( 2^n \cdot 2^{-1} - 1 \right) \\
+    \left( -2^{n - 1} \right) \quad &\text{to} \quad \left( 2^{n - 1} - 1 \right)
+    \end{align*}
+
+    Additionally, to find the value of $2^{16}$,
+    if it hasn't been memorized,
+    is to simply count up for values of $n$.
+    The values should look familiar which is a good sanity check.
+
+    \begin{verbatim}
+
+      n    2^n
+     ---   ---
+      1     2
+      2     4
+      3     8
+      4     16
+      5     32
+      6     64
+      7     128
+      8     256
+      9     512
+      10    1024
+      11    2048
+      12    4096
+      13    8192
+      14    16384
+      15    32768
+      16    65536
+    \end{verbatim}
+
+    Finally, the exact answers can be given.
+    For 16-bit unsigned numbers the range is from $0$ to $65536$.
+    And for 16-bit signed numbers the range is from $-32768$ to $32767$.
+    And from this it is easy to produce a plot (not shown).
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

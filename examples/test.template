@@ -1,0 +1,50 @@
+
+\documentclass{exam}
+%\documentclass[noanswers]{exam}  % w/o answers
+
+\printanswers
+%\noprintanswers
+
+\usepackage{multicol}
+\usepackage{ulem}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{tabularx}
+\usepackage{listings}
+\lstset{numbers=left,
+		basicstyle=\footnotesize,
+		xleftmargin=0.3in}
+
+\parindent=0pt
+%\usepackage{graphicx}
+
+\begin{document}
+
+\begin{tabularx}{\textwidth}{l X r}
+Name: \uline{\hspace{200pt}} & &  \\
+      & &  \\
+      & & {{title}} \\
+\end{tabularx}
+
+\vspace{10pt}
+
+\vspace{5pt}
+
+\begin{questions}
+
+{{#problems}}
+\begin{minipage}{\textwidth}
+\question {{question}}
+\end{minipage}
+
+\begin{solution}
+{{answer}}
+\end{solution}
+{{/problems}}
+
+\end{questions}
+
+\end{document}
+
+% vim:syntax=tex

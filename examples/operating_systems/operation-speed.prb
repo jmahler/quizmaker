@@ -1,0 +1,26 @@
+tags:
+    - interview
+    - linux
+    - operating systems
+
+time: 1 minute
+
+short_desc: speed of operations
+
+question: |
+    Rank the following operations from fastest to slowest:
+    \begin{enumerate}
+    \item Read from CPU register.
+    \item Disc seek.
+    \item Context switch.
+    \item Read from main memory.
+    \end{enumerate}
+
+    \vspace*{0.5in}
+
+answer: |
+    From fastest to slowest is: 1, 4, 3, 2.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

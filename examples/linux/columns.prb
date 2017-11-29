@@ -1,0 +1,36 @@
+tags:
+    - interview
+    - linux
+    - shell
+    - awk
+
+time: 30 seconds
+
+short_desc: command to print columns
+
+question:
+    Given a log file with columns separated by \verb+':'+, write the command
+    to display column three and then column two separated by \verb+', '+.
+
+    \begin{verbatim}
+    $ cat file
+    a:b:c
+    1:2:3
+    $ <command?> file
+    c, b
+    3, 2
+    \end{verbatim}
+
+answer:
+    \begin{verbatim}
+    cat file | awk -F ':' '{print $3 ", " $2}'
+    (or)
+    awk -F ':' '{print $3 ", " $2}' file
+    \end{verbatim}
+    By default, awk uses a space as the field separator.
+    The \verb+-F+ option is used to override this and set it to the
+    colon character.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

@@ -1,0 +1,48 @@
+tags:
+    - networking
+    - OSI 7 Layer Model
+    - interview
+
+short_desc: OSI 7 Layer Model Examples
+
+time: 5 minutes
+
+question: |
+    Specify which level(s) of the OSI 7 Layer Model each of the following
+    belongs.
+
+    \def\space{\hspace*{1.5em}}
+    ARP(\space),
+    Ethernet cable(\space),
+    ICMP(\space),
+    IP(\space),
+    PPP(\space),
+    SMTP(\space),
+    SSL(\space),
+    TCP(\space),
+    UDP(\space),
+    hub(\space),
+    mac address(\space),
+    router(\space),
+    sockets(\space),
+    www(\space),
+
+answer: |
+    ARP(2,3),
+    Ethernet cable(1),
+    ICMP(3),
+    IP(3),
+    PPP(2),
+    SMTP(7),
+    SSL(6),
+    TCP(4),
+    UDP(4),
+    hub(1),
+    mac address(2),
+    router(3),
+    sockets(3-7),
+    www(7),
+
+author: Jeremiah Mahler <jmmahler@gmail.com>.
+
+# vim:syntax=yaml

@@ -1,0 +1,21 @@
+
+tags:
+    - interview
+
+time: 1 minutes
+
+short_desc: Where do you see yourself in 5 years?
+
+question: |
+    Where do you see yourself in 5 years?
+     
+    \vspace*{2in}
+     
+
+answer: |-
+    The interviewee should have some specific goals and they should
+    mesh with the company and position that is being sought.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

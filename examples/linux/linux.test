@@ -1,0 +1,16 @@
+
+title: Linux Test
+
+problem_files:
+    - linux_abc.prb
+    - inode-01.prb
+    - kill.prb
+    - user-run-root.prb
+    - blank-lines.prb
+    - columns.prb
+    - chmod-bits.prb
+    - passwd-fields.prb
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml

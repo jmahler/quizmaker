@@ -1,0 +1,22 @@
+
+tags:
+    - interview
+    - C
+    - system programming
+
+time: "00:01:00"
+
+short_desc: What is a memory leak?
+
+question: |
+    What is a memory leak?
+
+    \vspace*{2in}
+
+answer: |-
+    A memory leak occurs when allocated memory cannot be freed
+    because the pointer to the memory is lost or changed.
+
+author: Jeremiah Mahler <jmmahler@gmail.com>
+
+# vim:syntax=yaml
